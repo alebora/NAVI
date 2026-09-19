@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file is the full coding context for NAVI. Agents should use it as the source of truth when implementing robot-side scripts, backend services, dashboard features, AI workflows, demo flows, and hardware integrations.
+This file is the full coding context for NAVI. Agents should use it as the source of truth when implementing robot-side scripts, backend services, dashboard features, mobile app features, AI workflows, demo flows, and hardware integrations.
 
 NAVI is an embodied indoor guide built on the newest Bracket Bot platform. It helps people navigate large indoor buildings while respecting NFC-card-based access rules. It can also record walking meetings with audio only, summarize them, and send the summary to an app dashboard.
 
@@ -18,6 +18,8 @@ Agents must preserve the actual hardware and project constraints:
 - Google models and Google Cloud services should be used heavily for AI: STT, TTS, LLM reasoning, summarization, and optional vision.
 - Meeting recording is audio only.
 - NFC card ID determines where the robot is allowed to guide someone.
+- The phone app should be built with React Native, preferably Expo + TypeScript unless a different tool is clearly better for iPhone/Xcode delivery.
+- The phone app and robot/backend must share the same meeting, navigation, clearance, robot event, and security notification data contracts.
 
 ---
 
@@ -151,6 +153,7 @@ The cloud handles heavier app and AI workflows:
 - Meeting transcription.
 - Meeting summarization.
 - Dashboard sync.
+- Mobile app sync.
 - Long-term storage.
 - Admin configuration.
 
@@ -168,6 +171,7 @@ Use Google models and Google Cloud services wherever practical:
 - Event messaging: Pub/Sub.
 - Authentication: Firebase Auth or Google Identity Platform.
 - Dashboard: Firebase Hosting, Cloud Run, or a Next.js deployment.
+- Mobile app: React Native with Expo and TypeScript, exported/prebuilt for Xcode when installing on iPhone.
 - Logs/monitoring: Cloud Logging and Cloud Monitoring.
 
 ## Hardware Assumptions
@@ -291,6 +295,25 @@ navi/
     components/
     lib/
 
+  mobile/
+    README.md
+    app.json
+    package.json
+    src/
+      app/
+      components/
+      features/
+        auth/
+        meetings/
+        robot/
+        navigation_logs/
+        security/
+        admin/
+      lib/
+        api.ts
+        firebase.ts
+        types.ts
+
   shared/
     types/
     prompts/
@@ -298,6 +321,7 @@ navi/
 
   docs/
     AGENTS.md
+    NAVI_APP_README.md
     setup.md
     demo_script.md
 ```
@@ -950,11 +974,13 @@ Semantic map model:
 }
 ```
 
-## Dashboard
+## Dashboard and Mobile App
 
-The dashboard should be the operational control center.
+The dashboard should be the operational control center for the team, and the mobile app should be the phone-first interface for users and admins.
 
-Pages:
+For detailed app implementation instructions, see `NAVI_APP_README.md`.
+
+Shared dashboard/app pages or screens:
 
 - Live robot status.
 - Active navigation session.
@@ -963,10 +989,11 @@ Pages:
 - Meeting recordings.
 - Meeting summaries.
 - Route/session logs.
+- Security notifications.
 - Admin settings.
 - Demo mode controls.
 
-Dashboard should show:
+The dashboard and app should show:
 
 - Current robot state.
 - Current face state.
@@ -976,9 +1003,24 @@ Dashboard should show:
 - Current route.
 - Meeting recording status.
 - Completed summaries.
+- Robot guidance history: who was guided where, when, and whether access was allowed or denied.
+- Security notifications, including future detections such as "person seen without badge" if implemented.
 - Errors and warnings.
 
 Use Firebase/Firestore for fast hackathon iteration, unless the team already has another stack.
+
+Mobile app MVP:
+
+- Show meeting summaries that belong to the signed-in user or selected demo user.
+- Show robot status and recent navigation sessions.
+- Show admin view of guidance logs: card/person, destination, clearance decision, start time, end time, and robot ID.
+- Show security notifications as a feed, even if the first version only uses simulated/manual notifications.
+
+Mobile app stretch features:
+
+- Let a user prove ownership of a hacker badge by NFC scanning on the phone. This may be difficult on iPhone depending on NFC tag type and project time, so do not make it required for the MVP.
+- Use periodic robot images plus Gemini image analysis to detect possible "person without badge" events. Treat this as a later feature and avoid making security claims unless the system is reliable.
+- Push notifications for meeting summaries, access-denied events, robot issues, or security events.
 
 ## Backend API
 
@@ -996,6 +1038,13 @@ POST /api/meeting/:id/stop
 GET  /api/meeting/:id/summary
 POST /api/robot/heartbeat
 POST /api/robot/event
+GET  /api/mobile/me
+GET  /api/mobile/meetings
+GET  /api/mobile/meetings/:id
+GET  /api/mobile/robot/status
+GET  /api/mobile/navigation-sessions
+GET  /api/mobile/security-events
+PATCH /api/mobile/security-events/:id
 ```
 
 Clearance check request:
@@ -1085,6 +1134,7 @@ Phase 4: Clearance-gated navigation
 - Allowed users get route guidance.
 - Denied users get polite refusal.
 - Dashboard logs all attempts.
+- Mobile app receives meeting summaries and navigation/admin logs.
 - Face displays access granted or access denied.
 
 Phase 5: Audio-only meeting recording
@@ -1175,11 +1225,12 @@ Agents coding NAVI must follow these rules:
 - Keep Vosk/local keyword recognition only as a fallback or demo shortcut.
 - Keep meeting recording audio-only.
 - Send meeting summaries to the dashboard.
+- Send meeting summaries, guidance logs, robot status, and security notifications to the mobile app through the shared backend.
 - Keep robot movement gated by safety, route validity, and clearance.
 
 ## Key Product Sentence
 
-NAVI is an embodied indoor guide that uses NFC card clearance to decide where it is allowed to guide someone, uses two RGB cameras for 3D SLAM, displays robot state through a Jetson-connected face monitor, reads NFC cards through an ESP32 PN532 serial bridge, records walking meetings with audio only, summarizes them to a dashboard with Google AI, and uses Meta Quest demonstrations as the path toward learned arm interactions like pressing elevator buttons.
+NAVI is an embodied indoor guide that uses NFC card clearance to decide where it is allowed to guide someone, uses two RGB cameras for 3D SLAM, displays robot state through a Jetson-connected face monitor, reads NFC cards through an ESP32 PN532 serial bridge, records walking meetings with audio only, summarizes them to a dashboard and mobile app with Google AI, logs robot guidance activity for admins, and uses Meta Quest demonstrations as the path toward learned arm interactions like pressing elevator buttons.
 
 ## Most Important Architecture Rule
 
