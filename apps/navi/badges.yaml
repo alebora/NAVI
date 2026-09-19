@@ -1,0 +1,8 @@
+# Badge UID -> who it belongs to, used when the tag has no NDEF name on it.
+#
+# Add entries by tapping instead of typing hex by hand:
+#   uv run nfc_bridge.py --enroll "Ada Lovelace"
+#
+# UIDs are lowercase hex, no separators: 4 bytes for MIFARE Classic,
+# 7 bytes for NTAG21x.
+badges: {}

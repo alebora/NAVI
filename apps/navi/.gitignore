@@ -1,2 +1,3 @@
 .env
 places.yaml.bak
+__pycache__/
