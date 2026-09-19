@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>01 / Navigation — NAVI</title></head><body><template>
+<style>
+*{box-sizing:border-box}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
+.beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
+.eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
+.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
+.line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
+.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
+.blue{color:#4ea3ff}
+.type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
+.glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
+.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.glyph .filled{fill:#4ea3ff;stroke:none;fill-opacity:0}
+.demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
+.demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.demo-top .chapter-name{color:#4ea3ff}
+.demo-top .placeholder-status{color:#92969c}
+.demo-center{position:absolute;left:192px;right:192px;top:420px}
+.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
+.demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
+.demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
+.demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+</style>
+<div data-hf-id="hf-edq4" id="root" data-composition-id="navigation" data-width="1920" data-height="1080" data-duration="5">
+<section data-hf-id="hf-ip7b" id="navigation-beat-1" class="beat clip" data-start="0" data-duration="1.25" data-track-index="0"><div data-hf-id="hf-3fjf" class="eyebrow">01 / Navigation</div><div data-hf-id="hf-906n" class="type-lockup"><h1 data-hf-id="hf-p2xq" class="headline" style="font-size:210px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-eomj" class="word" id="hf-ip7b-word-1">Just</span><span data-hf-id="hf-wnbq" class="word blue" id="hf-ip7b-word-2">ask.</span></span></h1></div></section>
+<section data-hf-id="hf-oweh" id="navigation-beat-2" class="beat clip" data-start="1.25" data-duration="1.75" data-track-index="0"><div data-hf-id="hf-ow23" class="eyebrow">01 / Navigation</div><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-zq99" class="headline" style="font-size:190px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-ynoc" class="word" id="hf-oweh-word-1">Follow</span><span data-hf-id="hf-s5mr" class="word blue" id="hf-oweh-word-2">NAVI.</span></span></h1><svg data-hf-id="hf-bfrl" class="glyph" viewBox="0 0 120 120" aria-hidden="true"><path data-hf-id="hf-yg81" d="M12 60 H104"  id="hf-oweh-shape-1"/><path data-hf-id="hf-623r" d="M64 20 L104 60 L64 100"  id="hf-oweh-shape-2"/></svg></div></section>
+<section data-hf-id="hf-engq" id="navigation-beat-3" class="beat clip" data-start="3" data-duration="2" data-track-index="0"><div data-hf-id="hf-ohr2" class="eyebrow">01 / Navigation</div><div data-hf-id="hf-wbfm" class="type-lockup"><h1 data-hf-id="hf-ugmz" class="headline" style="font-size:178px"><span data-hf-id="hf-thi2" class="line"><span data-hf-id="hf-3luw" class="word" id="hf-engq-word-1">All</span><span data-hf-id="hf-o034" class="word" id="hf-engq-word-2">the</span><span data-hf-id="hf-xcy8" class="word" id="hf-engq-word-3">way</span></span><span data-hf-id="hf-t371" class="line"><span data-hf-id="hf-odtr" class="word blue" id="hf-engq-word-4">there.</span></span></h1></div></section>
+</div>
+<script>const tl = gsap.timeline({paused:true});
+const beats = [{"id":"navigation-beat-1","start":0,"duration":1.25,"kind":"rise","times":[0,0.18],"icon":false},{"id":"navigation-beat-2","start":1.25,"duration":1.75,"kind":"wipe","times":[0,0.17],"icon":true},{"id":"navigation-beat-3","start":3,"duration":2,"kind":"rise","times":[0,0.08,0.21,0.38],"icon":false}];
+beats.forEach(beat => {
+  const words = gsap.utils.toArray("#" + beat.id + " .word");
+  words.forEach((word, i) => {
+    const when = beat.start + beat.times[i];
+    if (beat.kind === "cut") {
+      tl.set(word, {clipPath:"inset(0 0% 0 0)",y:0},when);
+    } else {
+      tl.fromTo(word,
+        {clipPath:beat.kind === "rise" ? "inset(100% 0 0 0)" : "inset(0 100% 0 0)", y:beat.kind === "rise" ? 32 : 0},
+        {clipPath:"inset(0 0% 0 0)", y:0, duration:beat.duration < 1.2 ? .2 : .32, ease:"power3.out", immediateRender:false},
+        when);
+    }
+  });
+  const glyph = document.querySelector("#" + beat.id + " .glyph");
+  if (glyph) {
+    glyph.querySelectorAll("path,rect,circle:not(.filled)").forEach((path, i) => {
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
+      tl.fromTo(path,{strokeDashoffset:length},{strokeDashoffset:0,duration:.38,ease:"power2.out",immediateRender:false},beat.start+.22+i*.1);
+    });
+    const dot = glyph.querySelector(".filled");
+    if (dot) tl.set(dot,{fillOpacity:1},beat.start+.48);
+  }
+});
+window.__timelines["navigation"] = tl;</script>
+</template></body></html>

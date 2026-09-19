@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Closing — NAVI</title></head><body><template>
+<style>
+*{box-sizing:border-box}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
+.beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
+.eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
+.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
+.line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
+.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
+.blue{color:#4ea3ff}
+.type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
+.glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
+.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.glyph .filled{fill:#4ea3ff;stroke:none;fill-opacity:0}
+.demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
+.demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.demo-top .chapter-name{color:#4ea3ff}
+.demo-top .placeholder-status{color:#92969c}
+.demo-center{position:absolute;left:192px;right:192px;top:420px}
+.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
+.demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
+.demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
+.demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+</style>
+<div data-hf-id="hf-jzx8" id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="4">
+<section data-hf-id="hf-9ee4" id="outro-beat-1" class="beat clip" data-start="0" data-duration="0.6" data-track-index="0"><div data-hf-id="hf-906n" class="type-lockup"><h1 data-hf-id="hf-eud7" class="headline" style="font-size:220px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-6glv" class="word" id="hf-9ee4-word-1">Guide.</span></span></h1></div></section>
+<section data-hf-id="hf-hi8r" id="outro-beat-2" class="beat clip" data-start="0.6" data-duration="0.6" data-track-index="0"><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-8pob" class="headline" style="font-size:220px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-doki" class="word" id="hf-hi8r-word-1">Verify.</span></span></h1></div></section>
+<section data-hf-id="hf-2gnr" id="outro-beat-3" class="beat clip" data-start="1.2" data-duration="0.8" data-track-index="0"><div data-hf-id="hf-wbfm" class="type-lockup"><h1 data-hf-id="hf-mexd" class="headline" style="font-size:200px"><span data-hf-id="hf-thi2" class="line"><span data-hf-id="hf-4byw" class="word" id="hf-2gnr-word-1">Remember.</span></span></h1></div></section>
+<section data-hf-id="hf-adqt" id="outro-beat-4" class="beat clip" data-start="2" data-duration="2" data-track-index="1"><div data-hf-id="hf-vx4l" class="type-lockup"><h1 data-hf-id="hf-aw6w" class="headline" style="font-size:300px"><span data-hf-id="hf-t371" class="line"><span data-hf-id="hf-0fi7" class="word blue" id="hf-adqt-word-1">NAVI</span></span></h1></div></section>
+</div>
+<script>const tl = gsap.timeline({paused:true});
+const beats = [{"id":"outro-beat-1","start":0,"duration":0.6,"kind":"cut","times":[0],"icon":false},{"id":"outro-beat-2","start":0.6,"duration":0.6,"kind":"cut","times":[0],"icon":false},{"id":"outro-beat-3","start":1.2,"duration":0.8,"kind":"cut","times":[0],"icon":false},{"id":"outro-beat-4","start":2,"duration":2,"kind":"wipe","times":[0],"icon":false}];
+beats.forEach(beat => {
+  const words = gsap.utils.toArray("#" + beat.id + " .word");
+  words.forEach((word, i) => {
+    const when = beat.start + beat.times[i];
+    if (beat.kind === "cut") {
+      tl.set(word, {clipPath:"inset(0 0% 0 0)",y:0},when);
+    } else {
+      tl.fromTo(word,
+        {clipPath:beat.kind === "rise" ? "inset(100% 0 0 0)" : "inset(0 100% 0 0)", y:beat.kind === "rise" ? 32 : 0},
+        {clipPath:"inset(0 0% 0 0)", y:0, duration:beat.duration < 1.2 ? .2 : .32, ease:"power3.out", immediateRender:false},
+        when);
+    }
+  });
+  const glyph = document.querySelector("#" + beat.id + " .glyph");
+  if (glyph) {
+    glyph.querySelectorAll("path,rect,circle:not(.filled)").forEach((path, i) => {
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
+      tl.fromTo(path,{strokeDashoffset:length},{strokeDashoffset:0,duration:.38,ease:"power2.out",immediateRender:false},beat.start+.22+i*.1);
+    });
+    const dot = glyph.querySelector(".filled");
+    if (dot) tl.set(dot,{fillOpacity:1},beat.start+.48);
+  }
+});
+window.__timelines["outro"] = tl;</script>
+</template></body></html>

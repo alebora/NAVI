@@ -1,0 +1,96 @@
+{
+  "duration": 53,
+  "assertions": [
+    {
+      "kind": "staysInFrame",
+      "selector": "#intro-beat-1 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#intro-beat-2 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#navigation-beat-1 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#navigation-beat-2 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#navigation-beat-3 .headline"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#demo-navigation-placeholder .demo-title",
+      "bySec": 9.2
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#demo-navigation-placeholder .demo-title"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#access-beat-1 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#access-beat-2 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#access-beat-3 .headline"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#demo-access-placeholder .demo-title",
+      "bySec": 24.2
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#demo-access-placeholder .demo-title"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#meeting-beat-1 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#meeting-beat-2 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#meeting-beat-3 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#meeting-beat-4 .headline"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#demo-meeting-placeholder .demo-title",
+      "bySec": 37.2
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#demo-meeting-placeholder .demo-title"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#outro-beat-1 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#outro-beat-2 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#outro-beat-3 .headline"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#outro-beat-4 .headline"
+    }
+  ]
+}

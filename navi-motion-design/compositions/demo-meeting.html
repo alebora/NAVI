@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Walking meeting demo — NAVI</title></head><body><template>
+<style>
+*{box-sizing:border-box}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
+.beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
+.eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
+.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
+.line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
+.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
+.blue{color:#4ea3ff}
+.type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
+.glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
+.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.glyph .filled{fill:#4ea3ff;stroke:none}
+.demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
+.demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.demo-top .chapter-name{color:#4ea3ff}
+.demo-top .placeholder-status{color:#92969c}
+.demo-center{position:absolute;left:192px;right:192px;top:420px}
+.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
+.demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
+.demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
+.demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+</style>
+<div data-hf-id="hf-9u7p" id="root" data-composition-id="demo-meeting" data-width="1920" data-height="1080" data-duration="12">
+<div data-hf-id="hf-hhni" id="demo-meeting-placeholder" class="demo-placeholder">
+  <div data-hf-id="hf-443n" class="demo-top"><span data-hf-id="hf-pbm1" class="chapter-name">03 / Walking meeting demo</span><span data-hf-id="hf-zfkj" class="placeholder-status">Demo footage goes here</span></div>
+  <div data-hf-id="hf-x9mh" class="demo-center"><h1 data-hf-id="hf-66el" class="demo-title">Walking meetings.</h1><p data-hf-id="hf-iin1" class="demo-shot">Consent first. Walk and talk. Review the recording.</p></div>
+  <div data-hf-id="hf-gekz" class="demo-footer"><span data-hf-id="hf-v481">assets/demo/meeting.mp4</span><span data-hf-id="hf-cwnr">12 seconds / 37–49s</span></div>
+</div>
+<!-- Replace this placeholder using the ready-to-copy markup in assets/demo/README.md. -->
+</div>
+<script>const tl = gsap.timeline({paused:true});
+window.__timelines["demo-meeting"] = tl;</script>
+</template></body></html>
