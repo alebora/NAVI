@@ -8,13 +8,16 @@
 
   uv run places.py where                 # print current pose
   uv run places.py save judging          # save current pose as "judging"
+  uv run places.py forget judging
   uv run places.py list
   uv run places.py go judging            # navigate there, wait for reached/failed
 
 Uses the nav daemon's planner via nav.command. Stop the route in the nav web UI
 first: only one app can own nav.command at a time.
 """
+import difflib
 import math
+import re
 import sys
 import time
 from pathlib import Path
@@ -47,6 +50,57 @@ def read_pose(timeout=3.0):
     raise RuntimeError("No slam.pose — is the slam daemon running and tracking?")
 
 
+NAME_OK = re.compile(r"^[a-z0-9][a-z0-9 _-]{0,30}$")
+
+
+def normalize(name):
+    """Spoken names arrive messy: 'The Judging Area!' -> 'judging area'."""
+    name = re.sub(r"[^a-z0-9 _-]", "", str(name).strip().lower())
+    name = re.sub(r"^(the|a|an) ", "", name)
+    name = re.sub(r"\s+", " ", name).strip()
+    if not NAME_OK.match(name):
+        raise ValueError(f"'{name}' is not a usable place name")
+    return name
+
+
+def resolve(name, places=None):
+    """Best saved place for a spoken name, or None. 'judging' finds 'judging area'."""
+    places = load_places() if places is None else places
+    name = normalize(name)
+    if name in places:
+        return name
+    partial = [k for k in places if name in k or k in name]
+    if len(partial) == 1:
+        return partial[0]
+    close = difflib.get_close_matches(name, list(places), n=1, cutoff=.6)
+    return close[0] if close else None
+
+
+def save_place(name):
+    """Save the robot's current pose under `name`. Returns (name, x, y)."""
+    name = normalize(name)
+    x, y, yaw = read_pose()
+    places = load_places()
+    places[name] = {"x": round(x, 3), "y": round(y, 3), "yaw": round(yaw, 4)}
+    tmp = PLACES_FILE.with_suffix(".yaml.tmp")
+    tmp.write_text(yaml.safe_dump(places, sort_keys=True))
+    tmp.replace(PLACES_FILE)          # atomic: voice.py may read this mid-write
+    return name, x, y
+
+
+def forget_place(name):
+    places = load_places()
+    found = resolve(name, places)
+    if found is None:
+        raise ValueError(f"no place called '{normalize(name)}'")
+    places.pop(found)
+    name = found
+    tmp = PLACES_FILE.with_suffix(".yaml.tmp")
+    tmp.write_text(yaml.safe_dump(places, sort_keys=True))
+    tmp.replace(PLACES_FILE)
+    return name
+
+
 def write_goal(writer, goal, enabled):
     with writer.buf() as command:
         command["enabled"] = enabled
@@ -64,8 +118,10 @@ def go(name, cancel=None, on_status=print):
     if the place is unknown or nav.command is owned elsewhere. `cancel` is an optional
     threading.Event that aborts the goal."""
     places = load_places()
-    if name not in places:
-        raise ValueError(f"Unknown place '{name}'. Known: {', '.join(places) or 'none'}")
+    found = resolve(name, places)
+    if found is None:
+        raise ValueError(f"Unknown place '{normalize(name)}'. Known: {', '.join(places) or 'none'}")
+    name = found
     p = places[name]
     goal = (p["x"], p["y"], p.get("yaw"))
     try:
@@ -105,12 +161,11 @@ def main(argv):
     if cmd == "where":
         x, y, yaw = read_pose()
         print(f"x={x:.3f} y={y:.3f} yaw={math.degrees(yaw):.1f}°")
-    elif cmd == "save" and len(argv) == 3:
-        x, y, yaw = read_pose()
-        places = load_places()
-        places[argv[2]] = {"x": round(x, 3), "y": round(y, 3), "yaw": round(yaw, 4)}
-        PLACES_FILE.write_text(yaml.safe_dump(places, sort_keys=True))
-        print(f"saved {argv[2]}: x={x:.3f} y={y:.3f}")
+    elif cmd == "save" and len(argv) >= 3:
+        name, x, y = save_place(" ".join(argv[2:]))
+        print(f"saved {name}: x={x:.3f} y={y:.3f}")
+    elif cmd == "forget" and len(argv) >= 3:
+        print(f"forgot {forget_place(' '.join(argv[2:]))}")
     elif cmd == "list":
         for name, p in load_places().items():
             print(f"{name:16s} x={p['x']:.2f} y={p['y']:.2f}")

@@ -59,6 +59,9 @@ People talk to you to find their way around. You can physically drive and lead t
   If you are unsure which place they mean, call list_places first, then ask briefly.
 - Say one short sentence before you start moving, e.g. "Sure, follow me to judging."
 - If someone says stop, wait, or hold on, call stop_navigation immediately.
+- When someone says to remember, save, or name where the robot is standing ("remember this as
+  the judging area"), call save_place with a short name, then confirm it in one sentence.
+  Never call save_place while driving, and never guess a name they did not say.
 - When you receive a message starting with [nav], tell the person what happened in one sentence.
 - Keep every reply to 1-2 short sentences. You are speaking out loud, so no lists or markdown."""
 
@@ -75,10 +78,31 @@ class Navigator:
     def busy(self):
         return self.thread is not None and self.thread.is_alive()
 
+    def save(self, place):
+        if self.busy:
+            return {"error": "can't save a place while driving; stop first"}
+        try:
+            name, x, y = places.save_place(place)
+        except (ValueError, RuntimeError) as e:
+            return {"error": str(e)}
+        print(f"[nav] saved '{name}' at x={x:.2f} y={y:.2f}", flush=True)
+        return {"status": "saved", "place": name, "total_places": len(places.load_places())}
+
+    def forget(self, place):
+        try:
+            return {"status": "forgotten", "place": places.forget_place(place)}
+        except ValueError as e:
+            return {"error": str(e)}
+
     def start(self, place):
         known = places.load_places()
-        if place not in known:
+        try:
+            match = places.resolve(place, known)
+        except ValueError as e:
+            return {"error": str(e)}
+        if match is None:
             return {"error": f"unknown place '{place}'", "known_places": list(known)}
+        place = match
         if not self.enabled:
             return {"status": "navigation disabled (--no-nav); pretend you would go", "place": place}
         if self.busy:
@@ -170,6 +194,25 @@ TOOLS = [
         parameters={"type": "object", "properties": {}},
     ),
     types.FunctionDeclaration(
+        name="save_place",
+        description=("Save the robot's CURRENT position under a name, so NAVI can be asked to go "
+                     "there later. Only call this when the person is standing with the robot at "
+                     "the spot they want remembered."),
+        behavior="NON_BLOCKING",
+        parameters={"type": "object",
+                    "properties": {"place": {"type": "string",
+                                             "description": "Short spoken name, e.g. 'judging' or 'hardware room'"}},
+                    "required": ["place"]},
+    ),
+    types.FunctionDeclaration(
+        name="forget_place",
+        description="Delete a saved place by name.",
+        behavior="NON_BLOCKING",
+        parameters={"type": "object",
+                    "properties": {"place": {"type": "string"}},
+                    "required": ["place"]},
+    ),
+    types.FunctionDeclaration(
         name="stop_navigation",
         description="Stop moving immediately.",
         behavior="NON_BLOCKING",
@@ -227,7 +270,11 @@ async def gemini_session(args):
                             args_ = dict(fc.args or {})
                             print(f"[tool] {fc.name}({args_})", flush=True)
                             if fc.name == "navigate_to":
-                                result = nav.start(str(args_.get("place", "")).strip().lower())
+                                result = nav.start(str(args_.get("place", "")))
+                            elif fc.name == "save_place":
+                                result = nav.save(str(args_.get("place", "")))
+                            elif fc.name == "forget_place":
+                                result = nav.forget(str(args_.get("place", "")))
                             elif fc.name == "list_places":
                                 result = {"places": list(places.load_places())}
                             elif fc.name == "stop_navigation":
