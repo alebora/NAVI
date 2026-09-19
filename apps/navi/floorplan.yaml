@@ -2,7 +2,7 @@
 # tied to the building and any drawn room becomes a drive target.
 #
 # All coordinates are normalised image coordinates: u = x / width, v = y / height,
-# origin top-left, measured off 1.png .. 7.png. They are resolution independent
+# origin top-left (u = x/15657, v = y/10131), measured off 1.png .. 7.png. They are resolution independent
 # and identical on every floor because all seven maps share one footprint.
 #
 # This file is static annotation. The SLAM<->plan link itself (anchors recorded
@@ -22,33 +22,33 @@ images:
 # one, stand it still, and run `floorplan.py anchor <floor> <landmark>`.
 # Two anchors fix a floor; three or more let residuals expose a bad one.
 landmarks:
-  pse elevators:          {u: 0.381, v: 0.155, hint: "stand in the middle of the PSE elevator lobby, facing the doors"}
-  pse female washroom:    {u: 0.400, v: 0.124}
-  pse male washroom:      {u: 0.400, v: 0.157}
-  pse water fountain:     {u: 0.367, v: 0.222}
-  pse stairs northwest:   {u: 0.187, v: 0.066}
-  pse stairs southwest:   {u: 0.187, v: 0.224}
-  pse stairs south:       {u: 0.387, v: 0.259}
-  pse stairs east:        {u: 0.491, v: 0.227}
-  e5 elevators:           {u: 0.387, v: 0.406, hint: "middle of the E5 elevator lobby"}
-  e5 pse connection:      {u: 0.356, v: 0.338, hint: "middle of the walkway joining the two buildings"}
-  e5 exit:                {u: 0.366, v: 0.527}
+  pse elevators:          {u: 0.589, v: 0.240, hint: "stand in the middle of the PSE elevator lobby, facing the doors"}
+  pse female washroom:    {u: 0.618, v: 0.192}
+  pse male washroom:      {u: 0.618, v: 0.243}
+  pse water fountain:     {u: 0.567, v: 0.343}
+  pse stairs northwest:   {u: 0.289, v: 0.102}
+  pse stairs southwest:   {u: 0.289, v: 0.346}
+  pse stairs south:       {u: 0.598, v: 0.400}
+  pse stairs east:        {u: 0.759, v: 0.351}
+  e5 elevators:           {u: 0.598, v: 0.627, hint: "middle of the E5 elevator lobby"}
+  e5 pse connection:      {u: 0.550, v: 0.522, hint: "middle of the walkway joining the two buildings"}
+  e5 exit:                {u: 0.566, v: 0.814}
 
 # Room centres, keyed by the exact `name` used in venue.yaml so voice.py can go
 # straight from what someone said to a place on the plan.
 rooms:
   2:
-    sponsor event room a:   {u: 0.177, v: 0.106}
-    sponsor event room b:   {u: 0.177, v: 0.174}
-    sponsor event room c:   {u: 0.243, v: 0.121}
-    hacking space floor 2:  {u: 0.444, v: 0.140}
-    sponsor bay:            {u: 0.406, v: 0.280}
-    project expo:           {u: 0.406, v: 0.300}
-    mlh booth:              {u: 0.349, v: 0.104}
-    judging rooms floor 2:  {u: 0.245, v: 0.224}
-    organizer hq:           {u: 0.306, v: 0.396}
-    volunteer hq:           {u: 0.188, v: 0.493}
-    crt table:              {u: 0.364, v: 0.411}
+    sponsor event room a:   {u: 0.274, v: 0.164}
+    sponsor event room b:   {u: 0.274, v: 0.269}
+    sponsor event room c:   {u: 0.376, v: 0.187}
+    hacking space floor 2:  {u: 0.686, v: 0.216}
+    sponsor bay:            {u: 0.627, v: 0.433}
+    project expo:           {u: 0.627, v: 0.464}
+    mlh booth:              {u: 0.539, v: 0.161}
+    judging rooms floor 2:  {u: 0.379, v: 0.346}
+    organizer hq:           {u: 0.473, v: 0.612}
+    volunteer hq:           {u: 0.291, v: 0.762}
+    crt table:              {u: 0.563, v: 0.635}
   7:
-    judging hq:             {u: 0.311, v: 0.140}
-    multi faith quiet room: {u: 0.381, v: 0.222}
+    judging hq:             {u: 0.481, v: 0.216}
+    multi faith quiet room: {u: 0.589, v: 0.343}

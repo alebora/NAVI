@@ -1,3 +1,4 @@
 .env
 places.yaml.bak
 __pycache__/
+.cache/
