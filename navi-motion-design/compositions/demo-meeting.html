@@ -3,34 +3,135 @@
 <style>
 *{box-sizing:border-box}
 #root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
-.beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
-.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
-.line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
-.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
-.blue{color:#4ea3ff}
-.type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
-.glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
-.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.glyph .filled{fill:#4ea3ff;stroke:none}
-.demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
-.demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
-.demo-top .chapter-name{color:#4ea3ff}
-.demo-top .placeholder-status{color:#92969c}
-.demo-center{position:absolute;left:192px;right:192px;top:420px}
-.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
-.demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
-.demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.dm-schematic{position:absolute;inset:0}
+.phase{position:absolute;inset:0}
+.reveal{display:block;clip-path:inset(0 100% 0 0)}
+.blue{color:#4ea3ff}
+.label{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 12px}
+/* Phase 1: consent */
+.dm-chat{position:absolute;left:192px;right:192px;top:300px}
+.dm-line{margin:0 0 54px}
+.dm-quote{margin:0;font-size:64px;font-weight:700;letter-spacing:-.045em;line-height:1.1}
+.dm-quote.soft{color:#b9bcc1}
+.dm-consent{display:flex;align-items:center;gap:22px;font-size:40px;font-weight:600;color:#4ea3ff;margin:0}
+.dm-consent svg{width:44px;height:44px;overflow:visible}
+.dm-consent path{fill:none;stroke:#4ea3ff;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+/* Phase 2: walking */
+.dm-rec{position:absolute;right:192px;top:112px;display:flex;align-items:center;gap:16px;font-size:26px;font-weight:600;letter-spacing:.08em}
+.dm-rec .dot{width:20px;height:20px;border-radius:50%;background:#4ea3ff}
+.dm-wave{position:absolute;left:192px;top:250px;width:1536px;height:200px;overflow:visible}
+.dm-wave rect{fill:#4ea3ff}
+.dm-walk{position:absolute;left:192px;top:560px;width:1536px;height:300px;overflow:visible}
+.dm-walk .track{stroke:#4a4e55;stroke-width:4;stroke-linecap:round}
+.dm-walk .pin{fill:#4ea3ff}
+.dm-walk .pin-stem{stroke:#4ea3ff;stroke-width:4}
+.dm-walk .place{font-family:Montserrat,sans-serif;font-size:24px;font-weight:600;letter-spacing:.1em;fill:#8a8e95;text-anchor:middle}
+.dm-walk .said{font-family:Montserrat,sans-serif;font-size:30px;font-weight:600;fill:#fff;text-anchor:middle}
+.dm-walk .person{fill:#8a8e95}
+.dm-stop{position:absolute;left:192px;bottom:120px;margin:0;font-size:40px;font-weight:700;letter-spacing:-.03em}
+/* Phase 3: summary */
+.dm-sum{position:absolute;left:192px;right:192px;top:250px}
+.dm-sum h2{margin:0 0 56px;font-size:84px;font-weight:700;letter-spacing:-.05em}
+.dm-cols{display:flex;gap:96px}
+.dm-col{flex:1}
+.dm-item{margin:0 0 30px}
+.dm-item .what{display:block;font-size:40px;font-weight:600;letter-spacing:-.03em;margin:0 0 6px}
+.dm-item .where{display:block;font-size:24px;font-weight:500;color:#4ea3ff}
 </style>
-<div data-hf-id="hf-9u7p" id="root" data-composition-id="demo-meeting" data-width="1920" data-height="1080" data-duration="12">
-<div data-hf-id="hf-hhni" id="demo-meeting-placeholder" class="demo-placeholder">
-  <div data-hf-id="hf-443n" class="demo-top"><span data-hf-id="hf-pbm1" class="chapter-name">03 / Walking meeting demo</span><span data-hf-id="hf-zfkj" class="placeholder-status">Demo footage goes here</span></div>
-  <div data-hf-id="hf-x9mh" class="demo-center"><h1 data-hf-id="hf-66el" class="demo-title">Walking meetings.</h1><p data-hf-id="hf-iin1" class="demo-shot">Consent first. Walk and talk. Review the recording.</p></div>
-  <div data-hf-id="hf-gekz" class="demo-footer"><span data-hf-id="hf-v481">assets/demo/meeting.mp4</span><span data-hf-id="hf-cwnr">12 seconds / 37–49s</span></div>
+<div data-hf-id="hf-dm00" id="root" data-composition-id="demo-meeting" data-width="1920" data-height="1080" data-duration="12">
+<!-- Schematic stand-in. To use real footage, remove div#demo-meeting-schematic and add the video markup from assets/demo/README.md. -->
+<div id="demo-meeting-schematic" class="dm-schematic">
+
+  <section id="dm-phase-1" class="phase clip" data-start="0" data-duration="3.2" data-track-index="0">
+    <div class="eyebrow">03 / Walking meetings — consent first</div>
+    <div class="dm-chat">
+      <div class="dm-line"><p class="label reveal">You</p><p class="dm-quote reveal">“NAVI, record this meeting.”</p></div>
+      <div class="dm-line"><p class="label reveal">NAVI</p><p class="dm-quote soft reveal">“Is everyone okay being recorded?”</p></div>
+      <p class="dm-consent reveal" id="dm-consent"><svg viewBox="0 0 44 44"><path d="M6 23 L17 34 L38 10"/></svg>All three said yes. Recording.</p>
+    </div>
+  </section>
+
+  <section id="dm-phase-2" class="phase clip" data-start="3.2" data-duration="5" data-track-index="0">
+    <div class="eyebrow">03 / Walking meetings — NAVI follows</div>
+    <div class="dm-rec"><span class="dot" id="dm-rec-dot"></span><span>REC <span id="dm-clock">00:00</span></span></div>
+    <svg class="dm-wave" id="dm-wave" viewBox="0 0 1536 200" aria-hidden="true"></svg>
+    <svg class="dm-walk" viewBox="0 0 1536 300" aria-hidden="true">
+      <line class="track" x1="0" y1="200" x2="1536" y2="200"/>
+      <g id="dm-pin-1" opacity="0"><line class="pin-stem" x1="300" y1="200" x2="300" y2="150"/><circle class="pin" cx="300" cy="140" r="12"/><text class="place" x="300" y="258">HALLWAY B</text><text class="said" x="300" y="100">“Ship the demo by 6.”</text></g>
+      <g id="dm-pin-2" opacity="0"><line class="pin-stem" x1="768" y1="200" x2="768" y2="150"/><circle class="pin" cx="768" cy="140" r="12"/><text class="place" x="768" y="258">ATRIUM</text><text class="said" x="768" y="100">“Design owns the video.”</text></g>
+      <g id="dm-pin-3" opacity="0"><line class="pin-stem" x1="1236" y1="200" x2="1236" y2="150"/><circle class="pin" cx="1236" cy="140" r="12"/><text class="place" x="1236" y="258">HARDWARE ROOM</text><text class="said" x="1236" y="100">“We need a second reader.”</text></g>
+      <g id="dm-group">
+        <circle class="person" cx="0" cy="200" r="11"/>
+        <circle class="person" cx="-30" cy="186" r="11"/>
+        <circle class="person" cx="-30" cy="214" r="11"/>
+        <circle cx="-86" cy="200" r="24" fill="none" stroke="#4ea3ff" stroke-width="4"/>
+        <circle cx="-86" cy="200" r="13" fill="#fff"/>
+      </g>
+    </svg>
+    <p class="dm-stop reveal" id="dm-stop">“NAVI, stop recording.”</p>
+  </section>
+
+  <section id="dm-phase-3" class="phase clip" data-start="8.2" data-duration="3.8" data-track-index="0">
+    <div class="eyebrow">03 / Walking meetings — summary</div>
+    <div class="dm-sum">
+      <h2 class="reveal" id="dm-sum-title">Meeting notes, <span class="blue">mapped.</span></h2>
+      <div class="dm-cols">
+        <div class="dm-col">
+          <p class="label reveal" id="dm-dec-label">Decisions</p>
+          <p class="dm-item" id="dm-item-1"><span class="what reveal">Ship the demo by 6 pm</span><span class="where reveal">Hallway B · 0:04</span></p>
+          <p class="dm-item" id="dm-item-2"><span class="what reveal">Design owns the video</span><span class="where reveal">Atrium · 0:09</span></p>
+        </div>
+        <div class="dm-col">
+          <p class="label reveal" id="dm-act-label">Action items</p>
+          <p class="dm-item" id="dm-item-3"><span class="what reveal">Get a second NFC reader</span><span class="where reveal">Hardware room · 0:13</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
-<!-- Replace this placeholder using the ready-to-copy markup in assets/demo/README.md. -->
 </div>
 <script>const tl = gsap.timeline({paused:true});
+const q = s => document.querySelector(s);
+const wipe = (sel, at, dur) => tl.fromTo(sel, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:dur || .35, ease:"power3.out", immediateRender:false}, at);
+const wipeAll = (scope, at, gap) => document.querySelectorAll(scope + " .reveal").forEach((el, i) => wipe(el, at + i * gap));
+
+// Phase 1: consent before any capture
+wipeAll("#dm-phase-1 .dm-line:nth-child(1)", .2, .12);
+wipeAll("#dm-phase-1 .dm-line:nth-child(2)", 1.0, .12);
+wipe("#dm-consent", 2.0, .45);
+const tick = q("#dm-consent path"), tickLen = tick.getTotalLength();
+tick.style.strokeDasharray = tickLen; tick.style.strokeDashoffset = tickLen; tick.style.opacity = 0;
+tl.fromTo(tick, {opacity:0}, {opacity:1, duration:.01, ease:"none", immediateRender:false}, 2.1);
+tl.fromTo(tick, {strokeDashoffset:tickLen}, {strokeDashoffset:0, duration:.3, ease:"power2.out", immediateRender:false}, 2.1);
+
+// Phase 2: deterministic waveform bars, revealed as the walk progresses
+const wave = q("#dm-wave"), BARS = 96, W = 1536 / BARS;
+for (let i = 0; i < BARS; i++) {
+  const h = 18 + 150 * Math.abs(Math.sin(i * .83) * Math.cos(i * .31 + 1.2));
+  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  r.setAttribute("x", i * W + 3); r.setAttribute("width", W - 6);
+  r.setAttribute("y", 100 - h / 2); r.setAttribute("height", h); r.setAttribute("rx", 3);
+  wave.appendChild(r);
+}
+const T0 = 3.2, WALK = 4.4;
+tl.fromTo("#dm-wave", {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:WALK, ease:"none", immediateRender:false}, T0 + .2);
+tl.fromTo("#dm-group", {x:120}, {x:1440, duration:WALK, ease:"none", immediateRender:false}, T0 + .2);
+[.2, .5, .81].forEach((f, i) => tl.fromTo("#dm-pin-" + (i + 1), {opacity:0, y:20}, {opacity:1, y:0, duration:.3, ease:"power3.out", immediateRender:false}, T0 + .2 + WALK * f));
+const clock = {s:0};
+tl.fromTo(clock, {s:0}, {s:14, duration:WALK, ease:"none", immediateRender:false,
+  onUpdate:() => { q("#dm-clock").textContent = "00:" + String(Math.floor(clock.s)).padStart(2, "0"); }}, T0 + .2);
+wipe("#dm-stop", T0 + 4.3);
+
+// Phase 3: summary, each item tagged with where it was said
+wipe("#dm-sum-title", 8.35, .45);
+wipe("#dm-dec-label", 8.8);
+wipeAll("#dm-item-1", 9.0, .12);
+wipeAll("#dm-item-2", 9.35, .12);
+wipe("#dm-act-label", 9.7);
+wipeAll("#dm-item-3", 9.9, .12);
+
 window.__timelines["demo-meeting"] = tl;</script>
 </template></body></html>

@@ -3,34 +3,135 @@
 <style>
 *{box-sizing:border-box}
 #root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
-.beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
-.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
-.line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
-.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
-.blue{color:#4ea3ff}
-.type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
-.glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
-.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.glyph .filled{fill:#4ea3ff;stroke:none}
-.demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
-.demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
-.demo-top .chapter-name{color:#4ea3ff}
-.demo-top .placeholder-status{color:#92969c}
-.demo-center{position:absolute;left:192px;right:192px;top:420px}
-.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
-.demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
-.demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.dn-schematic{position:absolute;inset:0}
+.dn-plan{position:absolute;left:192px;top:250px;width:980px;height:624px;overflow:visible}
+.dn-plan .wall{fill:none;stroke:#4a4e55;stroke-width:4;stroke-linecap:round}
+.dn-plan .room{font-family:Montserrat,sans-serif;font-size:24px;font-weight:600;letter-spacing:.1em;fill:#8a8e95;text-anchor:middle}
+.dn-plan .route{fill:none;stroke:#4ea3ff;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.dn-plan .crowd{fill:#8a8e95}
+.dn-plan .ring{fill:none;stroke:#4ea3ff;stroke-width:4}
+.dn-steps{position:absolute;left:1260px;top:250px;width:468px}
+.dn-step{margin:0 0 44px}
+.dn-label{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
+.dn-text{margin:0;font-size:40px;line-height:1.18;font-weight:600;letter-spacing:-.03em}
+.reveal{display:block;clip-path:inset(0 100% 0 0)}
+.blue{color:#4ea3ff}
 </style>
 <div data-hf-id="hf-c83c" id="root" data-composition-id="demo-navigation" data-width="1920" data-height="1080" data-duration="10">
-<div data-hf-id="hf-jupp" id="demo-navigation-placeholder" class="demo-placeholder">
-  <div data-hf-id="hf-443n" class="demo-top"><span data-hf-id="hf-2d8f" class="chapter-name">01 / Navigation demo</span><span data-hf-id="hf-zfkj" class="placeholder-status">Demo footage goes here</span></div>
-  <div data-hf-id="hf-x9mh" class="demo-center"><h1 data-hf-id="hf-8w56" class="demo-title">Navigation.</h1><p data-hf-id="hf-0pmq" class="demo-shot">Ask for a destination. Follow NAVI. Arrive.</p></div>
-  <div data-hf-id="hf-gekz" class="demo-footer"><span data-hf-id="hf-2cl0">assets/demo/navigation.mp4</span><span data-hf-id="hf-cbw7">10 seconds / 09–19s</span></div>
+<!-- Schematic stand-in. To use real footage, remove div#demo-navigation-schematic and add the video markup from assets/demo/README.md. -->
+<div id="demo-navigation-schematic" class="dn-schematic">
+  <div class="eyebrow">01 / Navigation — how it works</div>
+  <svg class="dn-plan" viewBox="0 0 1100 700" aria-hidden="true">
+    <g id="dn-walls">
+      <path class="wall" d="M0 0 H1100 V700 H0 Z"/>
+      <path class="wall" d="M300 0 V180 M0 260 H300"/>
+      <path class="wall" d="M0 440 H300 M300 520 V700"/>
+      <path class="wall" d="M800 0 V200 M800 300 H1100"/>
+      <path class="wall" d="M800 460 H1100 M800 540 V700"/>
+      <path class="wall" d="M430 90 H670 V240 H430 Z"/>
+    </g>
+    <g id="dn-rooms">
+      <text class="room" x="150" y="140">HARDWARE</text>
+      <text class="room" x="150" y="650">REGISTRATION</text>
+      <text class="room" x="950" y="100" id="dn-judging-label">JUDGING</text>
+      <text class="room" x="950" y="590">WASHROOM</text>
+      <text class="room" x="550" y="174">STAGE</text>
+    </g>
+    <path id="dn-route-a1" class="route" d="M160 530 L380 460"/>
+    <path id="dn-route-a2" class="route" d="M380 460 L560 350 L800 250 L950 170"/>
+    <path id="dn-route-b" class="route" d="M380 460 L470 600 L720 600 L740 300 L800 250 L950 170"/>
+    <g id="dn-crowd" opacity="0">
+      <circle class="crowd" cx="540" cy="345" r="13"/>
+      <circle class="crowd" cx="572" cy="332" r="13"/>
+      <circle class="crowd" cx="566" cy="366" r="13"/>
+      <text class="room" x="560" y="410">CROWD</text>
+    </g>
+    <circle id="dn-target" class="ring" cx="950" cy="170" r="30" opacity="0"/>
+    <circle id="dn-pulse" class="ring" cx="950" cy="170" r="30" opacity="0"/>
+    <circle id="dn-person" cx="160" cy="530" r="11" fill="#8a8e95" opacity="0"/>
+    <g id="dn-robot" opacity="0">
+      <circle id="dn-robot-halo" cx="160" cy="530" r="26" fill="none" stroke="#4ea3ff" stroke-width="4"/>
+      <circle id="dn-robot-core" cx="160" cy="530" r="14" fill="#fff"/>
+    </g>
+  </svg>
+  <div class="dn-steps">
+    <div class="dn-step" id="dn-step-1"><p class="dn-label reveal">You say</p><p class="dn-text reveal">“Take me to judging.”</p></div>
+    <div class="dn-step" id="dn-step-2"><p class="dn-label reveal">NAVI plans</p><p class="dn-text reveal">A route through the main hall.</p></div>
+    <div class="dn-step" id="dn-step-3"><p class="dn-label reveal">Path blocked</p><p class="dn-text reveal"><span class="blue">Rerouting</span> around the crowd.</p></div>
+    <div class="dn-step" id="dn-step-4"><p class="dn-label reveal">Arrived</p><p class="dn-text reveal">You're at <span class="blue">judging.</span></p></div>
+  </div>
 </div>
-<!-- Replace this placeholder using the ready-to-copy markup in assets/demo/README.md. -->
 </div>
 <script>const tl = gsap.timeline({paused:true});
+const q = s => document.querySelector(s);
+const draw = (el, at, dur) => {
+  const len = el.getTotalLength();
+  el.style.strokeDasharray = len;
+  el.style.strokeDashoffset = len;
+  el.style.opacity = 0;
+  tl.fromTo(el, {opacity:0}, {opacity:1, duration:.01, ease:"none", immediateRender:false}, at);
+  tl.fromTo(el, {strokeDashoffset:len}, {strokeDashoffset:0, duration:dur, ease:"power2.inOut", immediateRender:false}, at);
+};
+const reveal = (step, at) => {
+  document.querySelectorAll(step + " .reveal").forEach((el, i) => {
+    tl.fromTo(el, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:.35, ease:"power3.out", immediateRender:false}, at + i * .12);
+  });
+};
+const dim = (step, at) => tl.to(step + " .dn-text", {color:"#6b7078", duration:.3, ease:"none"}, at);
+
+// Floor plan draws in
+document.querySelectorAll("#dn-walls .wall").forEach((w, i) => draw(w, i * .08, .9));
+tl.fromTo("#dn-rooms", {opacity:0}, {opacity:1, duration:.4, ease:"none", immediateRender:false}, .7);
+
+// 1. The request
+reveal("#dn-step-1", .3);
+tl.fromTo(["#dn-robot", "#dn-person"], {opacity:0}, {opacity:1, duration:.3, ease:"none", immediateRender:false}, 1.1);
+tl.to("#dn-judging-label", {fill:"#4ea3ff", duration:.2, ease:"none"}, 1.5);
+tl.fromTo("#dn-target", {opacity:0}, {opacity:1, duration:.25, ease:"none", immediateRender:false}, 1.5);
+
+// 2. Plan the direct route
+reveal("#dn-step-2", 2.0);
+dim("#dn-step-1", 2.0);
+draw(q("#dn-route-a1"), 2.1, .35);
+draw(q("#dn-route-a2"), 2.4, .7);
+
+// Travel along one polyline (fixed coordinates, pure math) so NAVI and the follower never jump between routes
+const TRAVEL = [[160,530],[380,460],[470,600],[720,600],[740,300],[800,250],[950,170]];
+const SEG = TRAVEL.slice(1).map((b, i) => Math.hypot(b[0] - TRAVEL[i][0], b[1] - TRAVEL[i][1]));
+const TRAVEL_LEN = SEG.reduce((a, b) => a + b, 0);
+const LAG = 70;
+const at = d => {
+  d = Math.min(Math.max(d, 0), TRAVEL_LEN);
+  let i = 0;
+  while (i < SEG.length - 1 && d > SEG[i]) { d -= SEG[i]; i++; }
+  const a = TRAVEL[i], b = TRAVEL[i + 1], t = d / SEG[i];
+  return {x:a[0] + (b[0] - a[0]) * t, y:a[1] + (b[1] - a[1]) * t};
+};
+const robotEls = [q("#dn-robot-halo"), q("#dn-robot-core")], personEl = q("#dn-person");
+const place = p => {
+  const r = at(p), f = at(p - LAG);
+  robotEls.forEach(el => { el.setAttribute("cx", r.x); el.setAttribute("cy", r.y); });
+  personEl.setAttribute("cx", f.x); personEl.setAttribute("cy", f.y);
+};
+const firstLeg = SEG[0];
+const pos = {p:0};
+place(0);
+tl.fromTo(pos, {p:0}, {p:firstLeg, duration:1.0, ease:"power1.inOut", immediateRender:false, onUpdate:() => place(pos.p)}, 3.1);
+
+// 3. Blocked -> reroute
+tl.fromTo("#dn-crowd", {opacity:0}, {opacity:1, duration:.2, ease:"none", immediateRender:false}, 4.3);
+tl.to("#dn-route-a2", {opacity:.18, duration:.3, ease:"none"}, 4.5);
+reveal("#dn-step-3", 4.5);
+dim("#dn-step-2", 4.5);
+draw(q("#dn-route-b"), 5.0, .9);
+tl.fromTo(pos, {p:firstLeg}, {p:TRAVEL_LEN, duration:2.0, ease:"power1.inOut", immediateRender:false, onUpdate:() => place(pos.p)}, 6.0);
+
+// 4. Arrival
+reveal("#dn-step-4", 8.0);
+dim("#dn-step-3", 8.0);
+tl.fromTo("#dn-pulse", {attr:{r:30}, opacity:1}, {attr:{r:96}, opacity:0, duration:.9, ease:"power2.out", immediateRender:false}, 8.0);
+
 window.__timelines["demo-navigation"] = tl;</script>
 </template></body></html>

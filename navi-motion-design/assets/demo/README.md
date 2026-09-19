@@ -1,13 +1,14 @@
 # Demo footage handoff
 
-The draft is 53 seconds. Three calm slates mark the missing footage; no
-video files are currently required to preview it.
+The cut is 58 seconds. Until real footage exists, each demo slot plays an
+animated schematic (floor plan, badge tap, walking meeting). No video files
+are required to preview or render it.
 
 | Section | Timeline | Clip length | Filename |
 | --- | --- | --- | --- |
-| Navigation | 9–19s | 10s | navigation.mp4 |
-| NFC access | 24–31s | 7s | nfc.mp4 |
-| Walking meeting | 37–49s | 12s | meeting.mp4 |
+| Navigation | 14–24s | 10s | navigation.mp4 |
+| NFC access | 29–36s | 7s | nfc.mp4 |
+| Walking meeting | 42–54s | 12s | meeting.mp4 |
 
 ## What to film
 
@@ -23,10 +24,10 @@ Trim each edit to the slot length before adding it. Do not rely on a short
 clip auto-looping or holding its last frame. The default object-fit is contain
 so screen details won't be cropped.
 
-## Replace a placeholder
+## Replace a schematic with footage
 
 Place the three files in this directory. For each sub-composition below, remove
-the complete div with the matching placeholder id. Insert the video markup
+the complete div with the matching schematic id. Insert the video markup
 inside the existing root. Leave its template, stylesheet, script, and host
 in index.html intact.
 
@@ -36,7 +37,7 @@ owns its position in the whole film. Paths below resolve from the project root.
 ### Navigation demo
 
 File: compositions/demo-navigation.html
-Remove: div#demo-navigation-placeholder
+Remove: div#demo-navigation-schematic
 
 ```html
 <video id="demo-navigation-video" class="demo-video clip"
@@ -57,7 +58,7 @@ If this clip's recorded audio is cleared and should be audible, also insert:
 ### NFC demo
 
 File: compositions/demo-access.html
-Remove: div#demo-access-placeholder
+Remove: div#demo-access-schematic
 
 ```html
 <video id="demo-access-video" class="demo-video clip"
@@ -78,7 +79,7 @@ If this clip's recorded audio is cleared and should be audible, also insert:
 ### Walking meeting demo
 
 File: compositions/demo-meeting.html
-Remove: div#demo-meeting-placeholder
+Remove: div#demo-meeting-schematic
 
 ```html
 <video id="demo-meeting-video" class="demo-video clip"

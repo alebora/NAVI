@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>Closing — NAVI</title></head><body><template>
+<html lang="en"><head><meta charset="UTF-8"><title>Hook — NAVI</title></head><body><template>
 <style>
 *{box-sizing:border-box}
 #root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
@@ -23,14 +23,12 @@
 .demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
 </style>
-<div data-hf-id="hf-jzx8" id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="4">
-<section data-hf-id="hf-9ee4" id="outro-beat-1" class="beat clip" data-start="0" data-duration="0.6" data-track-index="0"><div data-hf-id="hf-906n" class="type-lockup"><h1 data-hf-id="hf-eud7" class="headline" style="font-size:220px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-6glv" class="word" id="hf-9ee4-word-1">Guide.</span></span></h1></div></section>
-<section data-hf-id="hf-hi8r" id="outro-beat-2" class="beat clip" data-start="0.6" data-duration="0.6" data-track-index="0"><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-8pob" class="headline" style="font-size:220px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-doki" class="word" id="hf-hi8r-word-1">Verify.</span></span></h1></div></section>
-<section data-hf-id="hf-2gnr" id="outro-beat-3" class="beat clip" data-start="1.2" data-duration="0.8" data-track-index="0"><div data-hf-id="hf-wbfm" class="type-lockup"><h1 data-hf-id="hf-mexd" class="headline" style="font-size:200px"><span data-hf-id="hf-thi2" class="line"><span data-hf-id="hf-4byw" class="word" id="hf-2gnr-word-1">Remember.</span></span></h1></div></section>
-<section data-hf-id="hf-adqt" id="outro-beat-4" class="beat clip" data-start="2" data-duration="2" data-track-index="1"><div data-hf-id="hf-vx4l" class="type-lockup"><h1 data-hf-id="hf-aw6w" class="headline" style="font-size:300px"><span data-hf-id="hf-t371" class="line"><span data-hf-id="hf-0fi7" class="word blue" id="hf-adqt-word-1">NAVI</span></span></h1></div><p id="outro-tagline" style="position:absolute;left:192px;right:192px;top:760px;margin:0;text-align:center;font-size:34px;font-weight:500;letter-spacing:.02em;color:#b9bcc1;clip-path:inset(0 100% 0 0)">An embodied indoor guide.</p></section>
+<div data-hf-id="hf-hk00" id="root" data-composition-id="hook" data-width="1920" data-height="1080" data-duration="5">
+<section id="hook-beat-1" class="beat clip" data-start="0" data-duration="2.5" data-track-index="0"><div class="type-lockup"><h1 class="headline" style="font-size:190px"><span class="line"><span class="word" id="hook-w1">Maps</span><span class="word" id="hook-w2">stop</span></span><span class="line"><span class="word" id="hook-w3">at</span><span class="word" id="hook-w4">the</span><span class="word blue" id="hook-w5">door.</span></span></h1></div></section>
+<section id="hook-beat-2" class="beat clip" data-start="2.5" data-duration="2.5" data-track-index="0"><div class="type-lockup"><h1 class="headline" style="font-size:170px"><span class="line"><span class="word" id="hook-w6">Inside,</span><span class="word" id="hook-w7">you're</span></span><span class="line"><span class="word" id="hook-w8">on</span><span class="word" id="hook-w9">your</span><span class="word blue" id="hook-w10">own.</span></span></h1></div></section>
 </div>
 <script>const tl = gsap.timeline({paused:true});
-const beats = [{"id":"outro-beat-1","start":0,"duration":0.6,"kind":"cut","times":[0],"icon":false},{"id":"outro-beat-2","start":0.6,"duration":0.6,"kind":"cut","times":[0],"icon":false},{"id":"outro-beat-3","start":1.2,"duration":0.8,"kind":"cut","times":[0],"icon":false},{"id":"outro-beat-4","start":2,"duration":2,"kind":"wipe","times":[0],"icon":false}];
+const beats = [{"id":"hook-beat-1","start":0,"duration":2.5,"kind":"rise","times":[0,0.12,0.5,0.6,0.72],"icon":false},{"id":"hook-beat-2","start":2.5,"duration":2.5,"kind":"wipe","times":[0,0.2,0.62,0.72,0.84],"icon":false}];
 beats.forEach(beat => {
   const words = gsap.utils.toArray("#" + beat.id + " .word");
   words.forEach((word, i) => {
@@ -56,6 +54,5 @@ beats.forEach(beat => {
     if (dot) tl.set(dot,{fillOpacity:1},beat.start+.48);
   }
 });
-tl.fromTo("#outro-tagline",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:.45,ease:"power3.out",immediateRender:false},2.45);
-window.__timelines["outro"] = tl;</script>
+window.__timelines["hook"] = tl;</script>
 </template></body></html>

@@ -35,6 +35,14 @@ Footage is the proof, not a background texture. A 10-second navigation shot,
 breathe. Replace the whole slate with full-frame footage, without placeholder
 labels or shot notes in the final cut.
 
+## Schematic demos
+
+Until footage exists, each demo slot is a "how it works" diagram in the same
+language: grey line work (#4a4e55), grey labels (#8a8e95), one blue path or
+state, white type. Every schematic is labeled in its eyebrow, masks badge IDs,
+and states NFC's limits. Motion is deterministic: line draws, clip wipes, and
+a polyline-interpolated travel (no DOM measurement inside callbacks).
+
 ## Editing
 
 Eight separate sub-compositions appear in Studio. Each host has an explicit

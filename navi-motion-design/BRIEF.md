@@ -7,7 +7,7 @@ destination: hackathon-demo
 aspect: 1920x1080
 language: en
 audience: Hack the North judges and attendees
-length: 53s
+length: 58s
 angle: embodied-ai-demo
 ---
 
@@ -23,19 +23,21 @@ audience can understand the physical interaction.
 
 ## Structure
 
-- 0–4s: Opening.
-- 4–9s: 01 / Navigation.
-- 9–19s: Navigation demo — replaceable footage slot.
-- 19–24s: 02 / NFC access.
-- 24–31s: NFC demo — replaceable footage slot.
-- 31–37s: 03 / Walking meetings.
-- 37–49s: Walking meeting demo — replaceable footage slot.
-- 49–53s: Closing.
+- 0–5s: Hook — the problem.
+- 5–9s: Opening.
+- 9–14s: 01 / Navigation.
+- 14–24s: Navigation demo — schematic, swappable for footage.
+- 24–29s: 02 / NFC access.
+- 29–36s: NFC demo — schematic, swappable for footage.
+- 36–42s: 03 / Walking meetings.
+- 42–54s: Walking meeting demo — schematic, swappable for footage.
+- 54–58s: Closing.
 
 ## Assets and truth
 
-No demo videos are available yet. All three demo sections explicitly say
-"Demo footage goes here". Replacement instructions: assets/demo/README.md.
+No demo videos are available yet. Each demo section plays a labeled
+“how it works” schematic built from simple lines and type — not simulated
+footage or product screenshots. Replacement instructions: assets/demo/README.md.
 
 Navigation shows a destination request, escort, and arrival.
 NFC demonstrates a prototype badge/access check, not proof that an NFC UID alone
