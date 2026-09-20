@@ -1,133 +1,44 @@
 ---
-title: NAVI — Guide. Verify. Remember.
-duration: 58s
+title: NAVI. Guide. Verify. Remember.
+duration: 90s
 aspect: 16:9
 workflow: general-video
-status: complete-with-schematic-demos
+status: schematics done; three live slots awaiting footage
 ---
 
-## Frame 0 — Hook
+Each chapter says it, shows how it works, then proves it with real footage.
 
-- scene: hook
-- duration: 5s
-- start: 0s
-- poster: 1.5s
-- transition_in: hard cut
-- status: implemented
-- src: compositions/hook.html
+| # | Scene | Start | Length | Source | Status |
+|---|---|---|---|---|---|
+| 1 | Opening | 0s | 4s | compositions/intro.html | done |
+| 2 | Hook | 4s | 5s | compositions/hook.html | done |
+| 3 | 01 / Navigation | 9s | 3.5s | compositions/navigation.html | done |
+| 4 | Navigation schematic | 12.5s | 11s | compositions/demo-navigation.html | done |
+| 5 | Navigation LIVE | 23.5s | 10s | compositions/live-navigation.html | needs navigation.mp4 |
+| 6 | 02 / NFC access | 33.5s | 3.5s | compositions/access.html | done |
+| 7 | NFC schematic | 37s | 8s | compositions/demo-access.html | done |
+| 8 | NFC LIVE | 45s | 8s | compositions/live-access.html | needs nfc.mp4 |
+| 9 | 03 / Walking meetings | 53s | 2.5s | compositions/meeting.html | done |
+| 10 | Walking meeting schematic | 55.5s | 14s | compositions/demo-meeting.html | done |
+| 11 | Walking meeting LIVE | 69.5s | 14s | compositions/live-meeting.html | needs meeting.mp4 |
+| 12 | Closing | 83.5s | 6.5s | compositions/outro.html | done |
 
-- 2.5s: Maps stop at the door.
-- 2.5s: Inside, you're on your own.
+## Words on screen
 
-## Frame 1 — Opening
+1. Opening: "Meet NAVI." then "Your indoor guide."
+2. Hook: "Maps stop at the door." then "Inside, you're on your own."
+3. Navigation: "Just ask." then "Follow NAVI."
+4. Navigation schematic: floor plan draws in, "Take me to judging.", route planned, a crowd blocks it, reroute, arrival.
+5. Navigation LIVE: slate carries the shot brief.
+6. NFC access: "Tap your badge." then "Verify access."
+7. NFC schematic: badge tap, Mr. Goose identified, Judging and Hardware allowed, Staff lounge refused, "Hi Mr. Goose. Where to?"
+8. NFC LIVE: slate carries the shot brief.
+9. Walking meetings: "Start recording."
+10. Walking meeting schematic: one continuous beat. The request stays on screen while the recording, waveform, walk and location pins grow beneath it, then the summary.
+11. Walking meeting LIVE: slate carries the shot brief.
+12. Closing: "Guide. Verify. Remember." resolving into the NAVI lockup and a soft fade.
 
-- scene: intro
-- duration: 4s
-- start: 5s
-- poster: 6s
-- transition_in: hard cut
-- status: implemented
-- src: compositions/intro.html
+## Live footage
 
-- 2s: Meet NAVI.
-- 2s: Your indoor guide.
-
-## Frame 2 — 01 / Navigation
-
-- scene: navigation
-- duration: 5s
-- start: 9s
-- poster: 10s
-- transition_in: hard cut
-- status: implemented
-- src: compositions/navigation.html
-
-- 1.25s: Just ask.
-- 1.75s: Follow NAVI.
-- 2s: All the way there.
-
-## Frame 3 — Navigation demo
-
-- scene: demo-navigation
-- duration: 10s
-- start: 14s
-- poster: 15s
-- transition_in: hard cut
-- status: schematic (swap for footage when filmed)
-- src: compositions/demo-navigation.html
-
-Schematic: floor plan draws in; “Take me to judging.”; route planned through the main hall; a crowd blocks it; NAVI reroutes along the lower corridor with the visitor following; arrival pulse at Judging.
-
-To use real footage, follow assets/demo/README.md with assets/demo/navigation.mp4.
-
-## Frame 4 — 02 / NFC access
-
-- scene: access
-- duration: 5s
-- start: 24s
-- poster: 25s
-- transition_in: hard cut
-- status: implemented
-- src: compositions/access.html
-
-- 1.8s: Tap your badge.
-- 1.7s: Verify access.
-- 1.5s: Let's go.
-
-## Frame 5 — NFC demo
-
-- scene: demo-access
-- duration: 7s
-- start: 29s
-- poster: 30s
-- transition_in: hard cut
-- status: schematic (swap for footage when filmed)
-- src: compositions/demo-access.html
-
-Schematic: badge taps the reader; identity read; Judging ✓, Hardware ✓, Staff lounge ✕ (staff only); NAVI: “Hi Ryan. Where to?”. Footnote states NFC is a prototype identity signal, not strong authentication. Badge ID is masked.
-
-To use real footage, follow assets/demo/README.md with assets/demo/nfc.mp4.
-
-## Frame 6 — 03 / Walking meetings
-
-- scene: meeting
-- duration: 6s
-- start: 36s
-- poster: 37s
-- transition_in: hard cut
-- status: implemented
-- src: compositions/meeting.html
-
-- 1.5s: Start recording.
-- 1s: With consent.
-- 1.5s: Walk and talk.
-- 2s: NAVI follows.
-
-## Frame 7 — Walking meeting demo
-
-- scene: demo-meeting
-- duration: 12s
-- start: 42s
-- poster: 43s
-- transition_in: hard cut
-- status: schematic (swap for footage when filmed)
-- src: compositions/demo-meeting.html
-
-Schematic: explicit consent (“Is everyone okay being recorded?” → all three said yes); walk with REC clock, audio waveform, and location pins where things were said; “stop recording”; summary of decisions and action items, each tagged with place and time.
-
-To use real footage, follow assets/demo/README.md with assets/demo/meeting.mp4.
-
-## Frame 8 — Closing
-
-- scene: outro
-- duration: 4s
-- start: 54s
-- poster: 55s
-- transition_in: hard cut
-- status: implemented
-- src: compositions/outro.html
-
-- 0.6s: Guide.
-- 0.6s: Verify.
-- 0.8s: Remember.
-- 2s: NAVI — An embodied indoor guide.
+Three slots, listed in assets/demo/README.md with copy-paste markup. Each on-screen
+slate states the shot, its length and the filename to hand back.

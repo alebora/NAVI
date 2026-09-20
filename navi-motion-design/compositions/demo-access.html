@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>NFC demo — NAVI</title></head><body><template>
+<html lang="en"><head><meta charset="UTF-8"><title>NFC demo, NAVI</title></head><body><template>
 <style>
+@font-face{font-family:'Lexend';src:url('assets/fonts/lexend.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block}
 *{box-sizing:border-box}
-#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
 .da-schematic{position:absolute;inset:0}
 .da-badge{position:absolute;left:250px;top:300px;width:300px;height:420px;border-radius:22px;background:#16181c;padding:44px 36px}
-.da-badge .strip{width:64px;height:10px;border-radius:5px;background:#4ea3ff;margin-bottom:150px}
+.da-badge .strip{width:64px;height:10px;border-radius:5px;background:#1255CC;margin-bottom:150px}
 .da-badge .role{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
-.da-badge .name{font-size:52px;font-weight:700;letter-spacing:-.04em;margin:0 0 26px}
+.da-badge .name{font-size:46px;font-weight:700;letter-spacing:-.04em;margin:0 0 26px}
 .da-badge .uid{font-size:22px;font-weight:500;letter-spacing:.14em;color:#8a8e95;margin:0}
 .da-reader{position:absolute;left:640px;top:370px;width:280px;height:280px;overflow:visible}
 .da-reader circle{fill:#16181c}
-.da-reader path{fill:none;stroke:#4ea3ff;stroke-width:9;stroke-linecap:round}
-.da-reader .pulse{fill:none;stroke:#4ea3ff;stroke-width:4}
+.da-reader path{fill:none;stroke:#1255CC;stroke-width:9;stroke-linecap:round}
+.da-reader .pulse{fill:none;stroke:#1255CC;stroke-width:4}
 .da-panel{position:absolute;left:1060px;top:300px;width:668px}
 .da-who{margin:0 0 40px}
 .da-label{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
 .da-name{margin:0;font-size:48px;font-weight:700;letter-spacing:-.04em}
 .da-row{display:flex;align-items:center;gap:22px;height:78px}
 .da-row svg{width:44px;height:44px;flex-shrink:0;overflow:visible}
-.da-row .ok path{fill:none;stroke:#4ea3ff;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.da-row .ok path{fill:none;stroke:#1255CC;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .da-row .no path{fill:none;stroke:#8a8e95;stroke-width:7;stroke-linecap:round}
 .da-place{font-size:40px;font-weight:600;letter-spacing:-.03em}
 .da-row.denied .da-place{color:#6b7078}
 .da-note{font-size:28px;font-weight:500;color:#8a8e95}
 .da-say{position:absolute;left:192px;right:192px;top:810px;margin:0;font-size:76px;font-weight:700;letter-spacing:-.045em;text-align:center}
 .da-foot{position:absolute;left:192px;right:192px;bottom:84px;margin:0;font-size:21px;font-weight:500;color:#8a8e95;text-align:center}
-.reveal{display:block;clip-path:inset(0 100% 0 0)}
-.blue{color:#4ea3ff}
+.reveal{display:block;clip-path:inset(0 100% 0 0);padding:.16em 0 .22em;margin:-.16em 0 -.22em;}
+.blue{color:#1255CC}
 </style>
 <div data-hf-id="hf-da00" id="root" data-composition-id="demo-access" data-width="1920" data-height="1080" data-duration="7">
 <!-- Schematic stand-in. To use real footage, remove div#demo-access-schematic and add the video markup from assets/demo/README.md. -->
 <div id="demo-access-schematic" class="da-schematic">
-  <div class="eyebrow">02 / NFC access — how it works</div>
   <div class="da-badge" id="da-badge">
     <div class="strip"></div>
     <p class="role">Attendee</p>
-    <p class="name">Ryan</p>
+    <p class="name">Mr. Goose</p>
     <p class="uid">ID •••• •••• 2F</p>
   </div>
   <svg class="da-reader" viewBox="0 0 280 280" aria-hidden="true">
@@ -49,12 +49,12 @@
     <circle id="da-pulse" class="pulse" cx="140" cy="140" r="140" opacity="0"/>
   </svg>
   <div class="da-panel">
-    <div class="da-who"><p class="da-label reveal" id="da-who-label">Badge read</p><p class="da-name reveal" id="da-who-name">Ryan · Attendee</p></div>
+    <div class="da-who"><p class="da-label reveal" id="da-who-label">Badge read</p><p class="da-name reveal" id="da-who-name">Mr. Goose · Attendee</p></div>
     <div class="da-row" id="da-row-1"><svg class="ok" viewBox="0 0 44 44"><path d="M6 23 L17 34 L38 10"/></svg><span class="da-place reveal">Judging area</span></div>
     <div class="da-row" id="da-row-2"><svg class="ok" viewBox="0 0 44 44"><path d="M6 23 L17 34 L38 10"/></svg><span class="da-place reveal">Hardware room</span></div>
     <div class="da-row denied" id="da-row-3"><svg class="no" viewBox="0 0 44 44"><path d="M9 9 L35 35 M35 9 L9 35"/></svg><span class="da-place reveal">Staff lounge</span><span class="da-note reveal">· staff only</span></div>
   </div>
-  <p class="da-say reveal" id="da-say">“Hi Ryan. <span class="blue">Where to?</span>”</p>
+  <p class="da-say reveal" id="da-say">“Hi Mr. Goose. <span class="blue">Where to?</span>”</p>
   <p class="da-foot reveal" id="da-foot">Prototype: the badge identifies you and sets what NAVI offers. It is not strong authentication.</p>
 </div>
 </div>

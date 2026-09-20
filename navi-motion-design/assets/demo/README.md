@@ -1,14 +1,14 @@
 # Demo footage handoff
 
-The cut is 58 seconds. Until real footage exists, each demo slot plays an
-animated schematic (floor plan, badge tap, walking meeting). No video files
-are required to preview or render it.
+The cut is 90 seconds. Each feature chapter now runs: typography title ->
+animated schematic ("how it works") -> a LIVE FOOTAGE slot holding a shot brief.
+The schematics stay; only the live slots are replaced with real video.
 
 | Section | Timeline | Clip length | Filename |
 | --- | --- | --- | --- |
-| Navigation | 14–24s | 10s | navigation.mp4 |
-| NFC access | 29–36s | 7s | nfc.mp4 |
-| Walking meeting | 42–54s | 12s | meeting.mp4 |
+| Navigation | 24–34s | 10s | navigation.mp4 |
+| NFC access | 46–54s | 8s | nfc.mp4 |
+| Walking meeting | 72–86s | 14s | meeting.mp4 |
 
 ## What to film
 
@@ -34,13 +34,13 @@ in index.html intact.
 Media time is local to that chapter (starts at zero); the host in index.html
 owns its position in the whole film. Paths below resolve from the project root.
 
-### Navigation demo
+### Navigation (live)
 
-File: compositions/demo-navigation.html
-Remove: div#demo-navigation-schematic
+File: compositions/live-navigation.html
+Remove: div#live-navigation-slot
 
 ```html
-<video id="demo-navigation-video" class="demo-video clip"
+<video id="live-navigation-video" class="demo-video clip"
   src="assets/demo/navigation.mp4"
   data-start="0" data-duration="10" data-track-index="0"
   muted playsinline></video>
@@ -49,51 +49,51 @@ Remove: div#demo-navigation-schematic
 If this clip's recorded audio is cleared and should be audible, also insert:
 
 ```html
-<audio id="demo-navigation-audio" class="clip"
+<audio id="live-navigation-audio" class="clip"
   src="assets/demo/navigation.mp4"
   data-start="0" data-duration="10"
   data-track-index="1" data-volume="1"></audio>
 ```
 
-### NFC demo
+### NFC access (live)
 
-File: compositions/demo-access.html
-Remove: div#demo-access-schematic
+File: compositions/live-access.html
+Remove: div#live-access-slot
 
 ```html
-<video id="demo-access-video" class="demo-video clip"
+<video id="live-access-video" class="demo-video clip"
   src="assets/demo/nfc.mp4"
-  data-start="0" data-duration="7" data-track-index="0"
+  data-start="0" data-duration="8" data-track-index="0"
   muted playsinline></video>
 ```
 
 If this clip's recorded audio is cleared and should be audible, also insert:
 
 ```html
-<audio id="demo-access-audio" class="clip"
+<audio id="live-access-audio" class="clip"
   src="assets/demo/nfc.mp4"
-  data-start="0" data-duration="7"
+  data-start="0" data-duration="8"
   data-track-index="1" data-volume="1"></audio>
 ```
 
-### Walking meeting demo
+### Walking meeting (live)
 
-File: compositions/demo-meeting.html
-Remove: div#demo-meeting-schematic
+File: compositions/live-meeting.html
+Remove: div#live-meeting-slot
 
 ```html
-<video id="demo-meeting-video" class="demo-video clip"
+<video id="live-meeting-video" class="demo-video clip"
   src="assets/demo/meeting.mp4"
-  data-start="0" data-duration="12" data-track-index="0"
+  data-start="0" data-duration="14" data-track-index="0"
   muted playsinline></video>
 ```
 
 If this clip's recorded audio is cleared and should be audible, also insert:
 
 ```html
-<audio id="demo-meeting-audio" class="clip"
+<audio id="live-meeting-audio" class="clip"
   src="assets/demo/meeting.mp4"
-  data-start="0" data-duration="12"
+  data-start="0" data-duration="14"
   data-track-index="1" data-volume="1"></audio>
 ```
 
@@ -113,3 +113,9 @@ the main duration, and STORYBOARD.md together.
 
 The backup of the previous motion-only edit is
 .hyperframes/backups/pre-demo-chapters.html.
+
+## Each live slot already carries its shot brief
+
+Open `compositions/live-*.html` to see the exact beats to film, they are also
+on screen in the current render, so anyone watching knows what is still missing.
+Film in one take per slot, landscape, and trim to the slot length before adding.

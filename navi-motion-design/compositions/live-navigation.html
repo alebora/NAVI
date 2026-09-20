@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>Live shot 1, Navigation</title></head><body><template>
+<style>
+@font-face{font-family:'Lexend';src:url('assets/fonts/lexend.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block}
+*{box-sizing:border-box}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
+.eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
+.slot{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
+.tag{position:absolute;right:192px;top:120px;font-size:22px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
+.mid{position:absolute;left:192px;right:192px;top:300px}
+.shot-no{margin:0 0 10px;font-size:22px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95}
+h1{margin:0 0 30px;font-size:96px;line-height:1.05;letter-spacing:-.05em;font-weight:700}
+.beats{margin:0;padding:0;list-style:none;max-width:1180px}
+.beats li{font-size:29px;line-height:1.4;font-weight:500;color:#c6c9ce;margin:0 0 8px;padding-left:38px;position:relative}
+.beats li::before{content:"";position:absolute;left:0;top:.62em;width:16px;height:3px;background:#1255CC}
+.foot{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
+.reveal{display:block;clip-path:inset(0 100% 0 0);padding:.02em 0 .22em}
+</style>
+<div id="root" data-composition-id="live-navigation" data-width="1920" data-height="1080" data-duration="10">
+<!-- LIVE FOOTAGE SLOT. Remove div#live-navigation-slot and insert the video markup from assets/demo/README.md. -->
+<div id="live-navigation-slot" class="slot">
+  <div class="mid">
+    <p class="shot-no reveal">Shot 1 · 10 seconds · one continuous take</p>
+    <h1 class="reveal">NAVI guides a real person.</h1>
+    <ul class="beats">
+      <li class="reveal">Someone asks out loud: “Take me to the judging area.”</li>
+      <li class="reveal">NAVI answers and pulls away; the person follows.</li>
+      <li class="reveal">Someone steps into the corridor, and NAVI reroutes without stopping the take.</li>
+      <li class="reveal">Arrival: NAVI says they're there, person steps into frame.</li>
+    </ul>
+  </div>
+  <div class="foot"><span>assets/demo/navigation.mp4 · 1920×1080 · 30fps</span><span>23.5–33.5s</span></div>
+</div>
+</div>
+<script>const tl = gsap.timeline({paused:true});
+document.querySelectorAll("#live-navigation-slot .reveal").forEach((el, i) => {
+  tl.fromTo(el, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:.35, ease:"power3.out", immediateRender:false}, .2 + i * .3);
+});
+window.__timelines["live-navigation"] = tl;</script>
+</template></body></html>

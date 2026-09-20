@@ -1,12 +1,12 @@
-# NAVI — motion and demo edit
+# NAVI motion and demo edit
 
 ## Art direction
 
 Simple editorial type, not a dashboard. One dominant message per beat.
-Black canvas, white type, restrained blue highlights (#4ea3ff).
+Black canvas, white type, restrained blue highlights (#1255CC).
 Footage slates use near-black (#090a0c) solely to distinguish unfinished footage.
 
-Montserrat 700 for motion typography; 600 for demo titles; 500 for metadata.
+Lexend 700 for motion typography; 600 for demo titles; 500 for metadata.
 Display size 174–300px, deliberately relaxed tracking (-0.052em).
 Keep key content within the 10% title-safe inset.
 No gradients, underlines, decorative rails, orbit rings, borders, fake telemetry,

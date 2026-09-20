@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>Navigation demo — NAVI</title></head><body><template>
+<html lang="en"><head><meta charset="UTF-8"><title>Navigation demo, NAVI</title></head><body><template>
 <style>
+@font-face{font-family:'Lexend';src:url('assets/fonts/lexend.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block}
 *{box-sizing:border-box}
-#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
 .dn-schematic{position:absolute;inset:0}
 .dn-plan{position:absolute;left:192px;top:250px;width:980px;height:624px;overflow:visible}
 .dn-plan .wall{fill:none;stroke:#4a4e55;stroke-width:4;stroke-linecap:round}
-.dn-plan .room{font-family:Montserrat,sans-serif;font-size:24px;font-weight:600;letter-spacing:.1em;fill:#8a8e95;text-anchor:middle}
-.dn-plan .route{fill:none;stroke:#4ea3ff;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.dn-plan .room{font-family:Lexend,sans-serif;font-size:24px;font-weight:600;letter-spacing:.1em;fill:#8a8e95;text-anchor:middle}
+.dn-plan .route{fill:none;stroke:#1255CC;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .dn-plan .crowd{fill:#8a8e95}
-.dn-plan .ring{fill:none;stroke:#4ea3ff;stroke-width:4}
+.dn-plan .ring{fill:none;stroke:#1255CC;stroke-width:4}
 .dn-steps{position:absolute;left:1260px;top:250px;width:468px}
 .dn-step{margin:0 0 44px}
 .dn-label{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
 .dn-text{margin:0;font-size:40px;line-height:1.18;font-weight:600;letter-spacing:-.03em}
-.reveal{display:block;clip-path:inset(0 100% 0 0)}
-.blue{color:#4ea3ff}
+.reveal{display:block;clip-path:inset(0 100% 0 0);padding:.16em 0 .22em;margin:-.16em 0 -.22em;}
+.blue{color:#1255CC}
 </style>
 <div data-hf-id="hf-c83c" id="root" data-composition-id="demo-navigation" data-width="1920" data-height="1080" data-duration="10">
 <!-- Schematic stand-in. To use real footage, remove div#demo-navigation-schematic and add the video markup from assets/demo/README.md. -->
 <div id="demo-navigation-schematic" class="dn-schematic">
-  <div class="eyebrow">01 / Navigation — how it works</div>
   <svg class="dn-plan" viewBox="0 0 1100 700" aria-hidden="true">
     <g id="dn-walls">
       <path class="wall" d="M0 0 H1100 V700 H0 Z"/>
@@ -52,7 +52,7 @@
     <circle id="dn-pulse" class="ring" cx="950" cy="170" r="30" opacity="0"/>
     <circle id="dn-person" cx="160" cy="530" r="11" fill="#8a8e95" opacity="0"/>
     <g id="dn-robot" opacity="0">
-      <circle id="dn-robot-halo" cx="160" cy="530" r="26" fill="none" stroke="#4ea3ff" stroke-width="4"/>
+      <circle id="dn-robot-halo" cx="160" cy="530" r="26" fill="none" stroke="#1255CC" stroke-width="4"/>
       <circle id="dn-robot-core" cx="160" cy="530" r="14" fill="#fff"/>
     </g>
   </svg>
@@ -88,7 +88,7 @@ tl.fromTo("#dn-rooms", {opacity:0}, {opacity:1, duration:.4, ease:"none", immedi
 // 1. The request
 reveal("#dn-step-1", .3);
 tl.fromTo(["#dn-robot", "#dn-person"], {opacity:0}, {opacity:1, duration:.3, ease:"none", immediateRender:false}, 1.1);
-tl.to("#dn-judging-label", {fill:"#4ea3ff", duration:.2, ease:"none"}, 1.5);
+tl.to("#dn-judging-label", {fill:"#1255CC", duration:.2, ease:"none"}, 1.5);
 tl.fromTo("#dn-target", {opacity:0}, {opacity:1, duration:.25, ease:"none", immediateRender:false}, 1.5);
 
 // 2. Plan the direct route

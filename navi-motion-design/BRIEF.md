@@ -7,7 +7,7 @@ destination: hackathon-demo
 aspect: 1920x1080
 language: en
 audience: Hack the North judges and attendees
-length: 58s
+length: 90s
 angle: embodied-ai-demo
 ---
 
@@ -23,20 +23,23 @@ audience can understand the physical interaction.
 
 ## Structure
 
-- 0–5s: Hook — the problem.
-- 5–9s: Opening.
-- 9–14s: 01 / Navigation.
-- 14–24s: Navigation demo — schematic, swappable for footage.
-- 24–29s: 02 / NFC access.
-- 29–36s: NFC demo — schematic, swappable for footage.
-- 36–42s: 03 / Walking meetings.
-- 42–54s: Walking meeting demo — schematic, swappable for footage.
-- 54–58s: Closing.
+- 0 to 4s: Opening, "Meet NAVI."
+- 4 to 9s: Hook, the problem.
+- 9 to 12.5s: 01 / Navigation.
+- 12.5 to 23.5s: Navigation schematic.
+- 23.5 to 33.5s: Navigation, LIVE footage slot.
+- 33.5 to 37s: 02 / NFC access.
+- 37 to 45s: NFC schematic.
+- 45 to 53s: NFC, LIVE footage slot.
+- 53 to 55.5s: 03 / Walking meetings.
+- 55.5 to 69.5s: Walking meeting schematic, fused into one continuous beat.
+- 69.5 to 83.5s: Walking meeting, LIVE footage slot.
+- 83.5 to 90s: Closing.
 
 ## Assets and truth
 
 No demo videos are available yet. Each demo section plays a labeled
-“how it works” schematic built from simple lines and type — not simulated
+“how it works” schematic built from simple lines and type, not simulated
 footage or product screenshots. Replacement instructions: assets/demo/README.md.
 
 Navigation shows a destination request, escort, and arrival.
