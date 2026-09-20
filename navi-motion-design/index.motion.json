@@ -1,5 +1,5 @@
 {
-  "duration": 53,
+  "duration": 90,
   "assertions": [
     {
       "kind": "staysInFrame",
@@ -11,24 +11,20 @@
     },
     {
       "kind": "staysInFrame",
-      "selector": "#navigation-beat-1 .headline"
-    },
-    {
-      "kind": "staysInFrame",
       "selector": "#navigation-beat-2 .headline"
     },
     {
-      "kind": "staysInFrame",
-      "selector": "#navigation-beat-3 .headline"
-    },
-    {
       "kind": "appearsBy",
-      "selector": "#demo-navigation-placeholder .demo-title",
-      "bySec": 9.2
+      "selector": "#dn-step-1 .dn-text",
+      "bySec": 7.3
     },
     {
       "kind": "staysInFrame",
-      "selector": "#demo-navigation-placeholder .demo-title"
+      "selector": ".dn-plan"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": ".dn-steps"
     },
     {
       "kind": "staysInFrame",
@@ -39,17 +35,17 @@
       "selector": "#access-beat-2 .headline"
     },
     {
-      "kind": "staysInFrame",
-      "selector": "#access-beat-3 .headline"
-    },
-    {
       "kind": "appearsBy",
-      "selector": "#demo-access-placeholder .demo-title",
-      "bySec": 24.2
+      "selector": "#da-badge",
+      "bySec": 34.7
     },
     {
       "kind": "staysInFrame",
-      "selector": "#demo-access-placeholder .demo-title"
+      "selector": ".da-panel"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#da-say"
     },
     {
       "kind": "staysInFrame",
@@ -57,40 +53,43 @@
     },
     {
       "kind": "staysInFrame",
-      "selector": "#meeting-beat-2 .headline"
+      "selector": ".dm-walk"
     },
     {
       "kind": "staysInFrame",
-      "selector": "#meeting-beat-3 .headline"
-    },
-    {
-      "kind": "staysInFrame",
-      "selector": "#meeting-beat-4 .headline"
+      "selector": ".dm-sum"
     },
     {
       "kind": "appearsBy",
-      "selector": "#demo-meeting-placeholder .demo-title",
-      "bySec": 37.2
+      "selector": "#live-navigation-slot h1",
+      "bySec": 19.7
     },
     {
       "kind": "staysInFrame",
-      "selector": "#demo-meeting-placeholder .demo-title"
+      "selector": "#live-navigation-slot .beats"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#live-access-slot h1",
+      "bySec": 44.2
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#live-meeting-slot h1",
+      "bySec": 70.7
     },
     {
       "kind": "staysInFrame",
-      "selector": "#outro-beat-1 .headline"
+      "selector": "#live-meeting-slot .beats"
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#dm-said",
+      "bySec": 56.5
     },
     {
       "kind": "staysInFrame",
-      "selector": "#outro-beat-2 .headline"
-    },
-    {
-      "kind": "staysInFrame",
-      "selector": "#outro-beat-3 .headline"
-    },
-    {
-      "kind": "staysInFrame",
-      "selector": "#outro-beat-4 .headline"
+      "selector": "#outro-lockup"
     }
   ]
 }

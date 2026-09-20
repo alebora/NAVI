@@ -1,36 +1,90 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>NFC demo — NAVI</title></head><body><template>
+<html lang="en"><head><meta charset="UTF-8"><title>NFC demo, NAVI</title></head><body><template>
 <style>
+@font-face{font-family:'Lexend';src:url('assets/fonts/lexend.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block}
 *{box-sizing:border-box}
-#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
-.beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
-.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
-.line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
-.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
-.blue{color:#4ea3ff}
-.type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
-.glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
-.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.glyph .filled{fill:#4ea3ff;stroke:none}
-.demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
-.demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
-.demo-top .chapter-name{color:#4ea3ff}
-.demo-top .placeholder-status{color:#92969c}
-.demo-center{position:absolute;left:192px;right:192px;top:420px}
-.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
-.demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
-.demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.da-schematic{position:absolute;inset:0}
+.da-badge{position:absolute;left:250px;top:300px;width:300px;height:420px;border-radius:22px;background:#16181c;padding:44px 36px}
+.da-badge .strip{width:64px;height:10px;border-radius:5px;background:#1255CC;margin-bottom:150px}
+.da-badge .role{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
+.da-badge .name{font-size:46px;font-weight:700;letter-spacing:-.022em;margin:0 0 26px}
+.da-badge .uid{font-size:22px;font-weight:500;letter-spacing:.14em;color:#8a8e95;margin:0}
+.da-reader{position:absolute;left:640px;top:370px;width:280px;height:280px;overflow:visible}
+.da-reader circle{fill:#16181c}
+.da-reader path{fill:none;stroke:#1255CC;stroke-width:9;stroke-linecap:round}
+.da-reader .pulse{fill:none;stroke:#1255CC;stroke-width:4}
+.da-panel{position:absolute;left:1060px;top:300px;width:668px}
+.da-who{margin:0 0 40px}
+.da-label{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
+.da-name{margin:0;font-size:48px;font-weight:700;letter-spacing:-.022em}
+.da-row{display:flex;align-items:center;gap:22px;height:78px}
+.da-row svg{width:44px;height:44px;flex-shrink:0;overflow:visible}
+.da-row .ok path{fill:none;stroke:#1255CC;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.da-row .no path{fill:none;stroke:#8a8e95;stroke-width:7;stroke-linecap:round}
+.da-place{font-size:40px;font-weight:600;letter-spacing:-.018em}
+.da-row.denied .da-place{color:#6b7078}
+.da-note{font-size:28px;font-weight:500;color:#8a8e95}
+.da-say{position:absolute;left:192px;right:192px;top:810px;margin:0;font-size:76px;font-weight:700;letter-spacing:-.025em;text-align:center}
+.reveal{display:block;clip-path:inset(0 100% 0 0);padding:.16em .1em .22em;margin:-.16em -.1em -.22em;}
+.blue{color:#1255CC}
 </style>
-<div data-hf-id="hf-9n7u" id="root" data-composition-id="demo-access" data-width="1920" data-height="1080" data-duration="7">
-<div data-hf-id="hf-a14d" id="demo-access-placeholder" class="demo-placeholder">
-  <div data-hf-id="hf-443n" class="demo-top"><span data-hf-id="hf-dyzp" class="chapter-name">02 / NFC demo</span><span data-hf-id="hf-zfkj" class="placeholder-status">Demo footage goes here</span></div>
-  <div data-hf-id="hf-x9mh" class="demo-center"><h1 data-hf-id="hf-ixn3" class="demo-title">NFC access.</h1><p data-hf-id="hf-ipnq" class="demo-shot">Badge tap. Access check. A clear response.</p></div>
-  <div data-hf-id="hf-gekz" class="demo-footer"><span data-hf-id="hf-i6lx">assets/demo/nfc.mp4</span><span data-hf-id="hf-lbmq">7 seconds / 24–31s</span></div>
+<div data-hf-id="hf-da00" id="root" data-composition-id="demo-access" data-width="1920" data-height="1080" data-duration="7">
+<!-- Schematic stand-in. To use real footage, remove div#demo-access-schematic and add the video markup from assets/demo/README.md. -->
+<div id="demo-access-schematic" class="da-schematic">
+  <div class="da-badge" id="da-badge">
+    <div class="strip"></div>
+    <p class="role">Attendee</p>
+    <p class="name">Mr. Goose</p>
+    <p class="uid">ID •••• •••• 2F</p>
+  </div>
+  <svg class="da-reader" viewBox="0 0 280 280" aria-hidden="true">
+    <circle cx="140" cy="140" r="140"/>
+    <path id="da-wave-1" d="M126 110 A40 40 0 0 1 126 170"/>
+    <path id="da-wave-2" d="M150 88 A70 70 0 0 1 150 192"/>
+    <path id="da-wave-3" d="M174 66 A100 100 0 0 1 174 214"/>
+    <circle id="da-pulse" class="pulse" cx="140" cy="140" r="140" opacity="0"/>
+  </svg>
+  <div class="da-panel">
+    <div class="da-who"><p class="da-label reveal" id="da-who-label">Badge read</p><p class="da-name reveal" id="da-who-name">Mr. Goose · Attendee</p></div>
+    <div class="da-row" id="da-row-1"><svg class="ok" viewBox="0 0 44 44"><path d="M6 23 L17 34 L38 10"/></svg><span class="da-place reveal">Judging area</span></div>
+    <div class="da-row" id="da-row-2"><svg class="ok" viewBox="0 0 44 44"><path d="M6 23 L17 34 L38 10"/></svg><span class="da-place reveal">Hardware room</span></div>
+    <div class="da-row denied" id="da-row-3"><svg class="no" viewBox="0 0 44 44"><path d="M9 9 L35 35 M35 9 L9 35"/></svg><span class="da-place reveal">Staff lounge</span><span class="da-note reveal">· staff only</span></div>
+  </div>
+  <p class="da-say reveal" id="da-say">“Hi Mr. Goose. <span class="blue">Where to?</span>”</p>
 </div>
-<!-- Replace this placeholder using the ready-to-copy markup in assets/demo/README.md. -->
 </div>
 <script>const tl = gsap.timeline({paused:true});
+const draw = (el, at, dur) => {
+  const len = el.getTotalLength();
+  el.style.strokeDasharray = len;
+  el.style.strokeDashoffset = len;
+  el.style.opacity = 0;
+  tl.fromTo(el, {opacity:0}, {opacity:1, duration:.01, ease:"none", immediateRender:false}, at);
+  tl.fromTo(el, {strokeDashoffset:len}, {strokeDashoffset:0, duration:dur, ease:"power2.out", immediateRender:false}, at);
+};
+const wipe = (sel, at) => tl.fromTo(sel, {clipPath:"inset(0 100% 0 0)"}, {clipPath:"inset(0 0% 0 0)", duration:.35, ease:"power3.out", immediateRender:false}, at);
+
+// Badge enters, then taps the reader
+tl.fromTo("#da-badge", {y:80, clipPath:"inset(100% 0 0 0)"}, {y:0, clipPath:"inset(0% 0 0 0)", duration:.5, ease:"power3.out", immediateRender:false}, .1);
+document.querySelectorAll(".da-reader path").forEach((p, i) => draw(p, .3 + i * .08, .35));
+tl.to("#da-badge", {x:170, rotation:-6, duration:.45, ease:"power2.inOut"}, .9);
+tl.fromTo("#da-pulse", {attr:{r:140}, opacity:1}, {attr:{r:210}, opacity:0, duration:.7, ease:"power2.out", immediateRender:false}, 1.35);
+tl.to("#da-badge", {x:0, rotation:0, duration:.45, ease:"power2.inOut"}, 1.6);
+
+// Identity, then per-place access
+wipe("#da-who-label", 1.5);
+wipe("#da-who-name", 1.62);
+["#da-row-1", "#da-row-2", "#da-row-3"].forEach((row, i) => {
+  const at = 2.2 + i * .45;
+  draw(document.querySelector(row + " svg path"), at, .3);
+  document.querySelectorAll(row + " .reveal").forEach((el, j) => wipe(el, at + .08 + j * .1));
+});
+
+// NAVI greets
+wipe("#da-say", 4.0);
+
 window.__timelines["demo-access"] = tl;</script>
 </template></body></html>

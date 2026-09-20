@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>02 / NFC access — NAVI</title></head><body><template>
+<html lang="en"><head><meta charset="UTF-8"><title>02 / NFC access, NAVI</title></head><body><template>
 <style>
+@font-face{font-family:'Lexend';src:url('assets/fonts/lexend.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block}
 *{box-sizing:border-box}
-#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased}
+#root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
 .beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
-.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
+.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.028em;text-align:center}
 .line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
-.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path}
-.blue{color:#4ea3ff}
+.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path;padding:.16em .1em .22em;margin:-.16em -.1em -.22em;}
+.blue{color:#1255CC}
 .type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
 .glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
-.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#4ea3ff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.glyph .filled{fill:#4ea3ff;stroke:none;fill-opacity:0}
+.glyph path,.glyph rect,.glyph circle{fill:none;stroke:#1255CC;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.glyph .filled{fill:#1255CC;stroke:none;fill-opacity:0}
 .demo-placeholder{position:absolute;inset:0;background:#090a0c;padding:120px 192px}
 .demo-top{display:flex;justify-content:space-between;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
-.demo-top .chapter-name{color:#4ea3ff}
+.demo-top .chapter-name{color:#1255CC}
 .demo-top .placeholder-status{color:#92969c}
 .demo-center{position:absolute;left:192px;right:192px;top:420px}
-.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
+.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.018em;font-weight:600}
 .demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
 .demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
 </style>
-<div data-hf-id="hf-n98k" id="root" data-composition-id="access" data-width="1920" data-height="1080" data-duration="5">
-<section data-hf-id="hf-cs18" id="access-beat-1" class="beat clip" data-start="0" data-duration="1.8" data-track-index="0"><div data-hf-id="hf-ut5z" class="eyebrow">02 / NFC access</div><div data-hf-id="hf-906n" class="type-lockup"><h1 data-hf-id="hf-ugmz" class="headline" style="font-size:178px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-4hpw" class="word blue" id="hf-cs18-word-1">Tap</span><span data-hf-id="hf-3qt2" class="word" id="hf-cs18-word-2">your</span><span data-hf-id="hf-r3ry" class="word" id="hf-cs18-word-3">badge.</span></span></h1><svg data-hf-id="hf-bfrl" class="glyph" viewBox="0 0 120 120" aria-hidden="true"><rect data-hf-id="hf-2lzo" x="16" y="26" width="67" height="78" rx="8"  id="hf-cs18-shape-1"/><path data-hf-id="hf-lwky" d="M35 26 V14 H65 V26 M33 79 H65 M96 44 Q114 60 96 76"  id="hf-cs18-shape-2"/></svg></div></section>
-<section data-hf-id="hf-bqbx" id="access-beat-2" class="beat clip" data-start="1.8" data-duration="1.7" data-track-index="0"><div data-hf-id="hf-nqh3" class="eyebrow">02 / NFC access</div><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-xoj2" class="headline" style="font-size:184px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-j7eg" class="word" id="hf-bqbx-word-1">Verify</span><span data-hf-id="hf-qh51" class="word blue" id="hf-bqbx-word-2">access.</span></span></h1></div></section>
-<section data-hf-id="hf-kdux" id="access-beat-3" class="beat clip" data-start="3.5" data-duration="1.5" data-track-index="0"><div data-hf-id="hf-nc62" class="eyebrow">02 / NFC access</div><div data-hf-id="hf-wbfm" class="type-lockup"><h1 data-hf-id="hf-eud7" class="headline" style="font-size:220px"><span data-hf-id="hf-thi2" class="line"><span data-hf-id="hf-acj4" class="word" id="hf-kdux-word-1">Let's</span><span data-hf-id="hf-fpxh" class="word blue" id="hf-kdux-word-2">go.</span></span></h1></div></section>
+<div data-hf-id="hf-n98k" id="root" data-composition-id="access" data-width="1920" data-height="1080" data-duration="3.5">
+<section data-hf-id="hf-cs18" id="access-beat-1" class="beat clip" data-start="0" data-duration="1.8" data-track-index="0"><div data-hf-id="hf-906n" class="type-lockup"><h1 data-hf-id="hf-ugmz" class="headline" style="font-size:178px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-4hpw" class="word blue" id="hf-cs18-word-1">Tap</span><span data-hf-id="hf-3qt2" class="word" id="hf-cs18-word-2">your</span><span data-hf-id="hf-r3ry" class="word" id="hf-cs18-word-3">badge.</span></span></h1><svg data-hf-id="hf-bfrl" class="glyph" viewBox="0 0 120 120" aria-hidden="true"><rect data-hf-id="hf-2lzo" x="16" y="26" width="67" height="78" rx="8"  id="hf-cs18-shape-1"/><path data-hf-id="hf-lwky" d="M35 26 V14 H65 V26 M33 79 H65 M96 44 Q114 60 96 76"  id="hf-cs18-shape-2"/></svg></div></section>
+<section data-hf-id="hf-bqbx" id="access-beat-2" class="beat clip" data-start="1.8" data-duration="1.7" data-track-index="0"><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-xoj2" class="headline" style="font-size:184px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-j7eg" class="word" id="hf-bqbx-word-1">Verify</span><span data-hf-id="hf-qh51" class="word blue" id="hf-bqbx-word-2">access.</span></span></h1></div></section>
 </div>
 <script>const tl = gsap.timeline({paused:true});
-const beats = [{"id":"access-beat-1","start":0,"duration":1.8,"kind":"wipe","times":[0,0.14,0.31],"icon":true},{"id":"access-beat-2","start":1.8,"duration":1.7,"kind":"rise","times":[0,0.19],"icon":false},{"id":"access-beat-3","start":3.5,"duration":1.5,"kind":"wipe","times":[0,0.16],"icon":false}];
+const beats = [{"id":"access-beat-1","start":0,"duration":1.8,"kind":"wipe","times":[0,0.14,0.31],"icon":true},{"id":"access-beat-2","start":1.8,"duration":1.7,"kind":"rise","times":[0,0.19],"icon":false}];
 beats.forEach(beat => {
   const words = gsap.utils.toArray("#" + beat.id + " .word");
   words.forEach((word, i) => {
