@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NAVI | Intelligent Navigation Robot</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">NAVI</div>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Meet <span>NAVI</span></h1>
+
+            <p class="hero-description">
+                A Bracket Bot robot guiding Hack the North. Ask it
+                where to go.
+            </p>
+
+            <a href="#ask-navi" class="primary-button">Ask NAVI something →</a>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+            <div class="robot-frame">
+                <img
+                    src="{{ url_for('static', filename='navi.png') }}"
+                    alt="NAVI, the intelligent navigation robot"
+                >
+            </div>
+
+            <div class="robot-specs">
+                <span>Bracket Bot platform</span>
+                <span>Dual RGB camera SLAM</span>
+                <span>NFC-gated access</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ASK NAVI -->
+
+    <section id="ask-navi" class="section intelligence-section reveal">
+        <div class="section-inner">
+
+            <h2 class="section-title">Ask NAVI anything.</h2>
+
+            <div class="navi-interface">
+
+                <div class="input-row">
+                    <input
+                        type="text"
+                        id="navi-input"
+                        class="navi-input"
+                        placeholder="Where can I learn about OpenAI?"
+                        autocomplete="off"
+                    >
+                    <button id="navi-button" class="navi-button">Ask NAVI</button>
+                </div>
+
+                <div class="example-chips">
+                    <button class="example-chip" type="button">Where can I learn about OpenAI?</button>
+                    <button class="example-chip" type="button">I want to meet companies</button>
+                    <button class="example-chip" type="button">What can I do tonight?</button>
+                    <button class="example-chip" type="button">Something about security</button>
+                </div>
+
+                <div id="navi-status" class="status" hidden>
+                    <span id="navi-status-text">Thinking...</span>
+                </div>
+
+                <div id="navi-result" class="result-container"></div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">NAVI</div>
+            <p>Hack the North</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
