@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Activity, FileAudio, Radio } from "lucide-react";
-import { getRobotStatus, listMeetings } from "../lib/api";
+import { Activity, AlertTriangle, FileAudio, MapPinned, Radio } from "lucide-react";
+import { getRobotStatus, listGuidanceSessions, listMeetings, listSecurityEvents } from "../lib/api";
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en", {
@@ -16,7 +16,12 @@ export default async function HomePage() {
     listMeetings().catch(() => []),
     getRobotStatus().catch(() => null),
   ]);
+  const [sessions, events] = await Promise.all([
+    listGuidanceSessions().catch(() => []),
+    listSecurityEvents().catch(() => []),
+  ]);
   const latest = meetings[0];
+  const openEvents = events.filter((event) => event.status === "open");
 
   return (
     <main className="shell">
@@ -31,13 +36,27 @@ export default async function HomePage() {
         </span>
       </header>
 
+      <nav className="nav">
+        <Link href="/">Overview</Link>
+        <Link href="/meetings">Meetings</Link>
+        <Link href="/guidance">Guidance</Link>
+        <Link href="/security">Security</Link>
+      </nav>
+
+      <section className="kpis">
+        <div className="kpi"><span>Meetings</span><strong>{meetings.length}</strong></div>
+        <div className="kpi"><span>Guidance sessions</span><strong>{sessions.length}</strong></div>
+        <div className="kpi"><span>Open security events</span><strong>{openEvents.length}</strong></div>
+      </section>
+
       <section className="grid">
         <aside className="panel">
           <h2>Robot</h2>
           <p className="muted">{status?.robotId ?? "No backend connection"}</p>
-          <p><Radio size={16} /> {status?.online ? "Online" : "Unknown"}</p>
-          <p><Activity size={16} /> {status?.robotState ?? "Unavailable"}</p>
+          <p className="row-title"><Radio size={16} /> {status?.online ? "Online" : "Unknown"}</p>
+          <p className="row-title"><Activity size={16} /> {status?.robotState ?? "Unavailable"}</p>
           <p className="muted">Face: {status?.faceState ?? "Unavailable"}</p>
+          {status?.currentDestinationName ? <p className="muted">Destination: {status.currentDestinationName}</p> : null}
         </aside>
 
         <section>
@@ -55,13 +74,31 @@ export default async function HomePage() {
             )}
           </div>
 
-          <h2>All Meetings</h2>
+          <div className="list-header">
+            <h2>Recent Meetings</h2>
+            <Link href="/meetings">View all</Link>
+          </div>
           {meetings.map((meeting) => (
             <Link className="card" key={meeting.meetingId} href={`/meetings/${meeting.meetingId}`}>
               <strong><FileAudio size={16} /> {meeting.title}</strong>
-              <p className="muted">{formatDate(meeting.startedAt)} · {meeting.status}</p>
+              <div className="meta-line">
+                <span className="tag">{formatDate(meeting.startedAt)}</span>
+                <span className={`tag ${meeting.status === "failed" ? "red" : meeting.status === "ready" ? "green" : "amber"}`}>{meeting.status}</span>
+              </div>
             </Link>
           ))}
+
+          <div className="list-header">
+            <h2>Operations</h2>
+          </div>
+          <Link className="card" href="/guidance">
+            <strong><MapPinned size={16} /> Guidance logs</strong>
+            <p className="muted">Recent destinations, badge decisions, and route outcomes.</p>
+          </Link>
+          <Link className="card" href="/security">
+            <strong><AlertTriangle size={16} /> Security events</strong>
+            <p className="muted">Access denials, unknown cards, robot errors, and review items.</p>
+          </Link>
         </section>
       </section>
     </main>

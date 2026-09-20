@@ -2,7 +2,12 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import { z } from "zod";
-import { meetingsCollection } from "./db.js";
+import {
+  guidanceSessionsCollection,
+  meetingsCollection,
+  robotStatusCollection,
+  securityEventsCollection,
+} from "./db.js";
 import type { RobotStatus } from "./types.js";
 
 const app = express();
@@ -46,15 +51,52 @@ app.get("/api/meetings/:meetingId", async (req, res, next) => {
 });
 
 app.get("/api/robot/status", (_req, res) => {
-  const status: RobotStatus = {
-    robotId: process.env.ROBOT_ID ?? "bracketbot-189",
-    online: true,
-    robotState: "IDLE",
-    faceState: "IDLE",
-    meetingRecordingActive: false,
-    lastHeartbeatAt: new Date().toISOString(),
-  };
-  res.json({ status });
+  void (async () => {
+    const fallback: RobotStatus = {
+      robotId: process.env.ROBOT_ID ?? "bracketbot-189",
+      online: true,
+      robotState: "IDLE",
+      faceState: "IDLE",
+      meetingRecordingActive: false,
+      lastHeartbeatAt: new Date().toISOString(),
+    };
+    const collection = await robotStatusCollection();
+    const latest = await collection.findOne({}, { sort: { lastHeartbeatAt: -1 } });
+    res.json({ status: latest ?? fallback });
+  })().catch((error) => {
+    console.error(error);
+    res.status(500).json({ error: "internal_error" });
+  });
+});
+
+app.get("/api/guidance-sessions", async (req, res, next) => {
+  try {
+    const limit = Math.min(Number(req.query.limit ?? 50), 100);
+    const collection = await guidanceSessionsCollection();
+    const sessions = await collection
+      .find({})
+      .sort({ startedAt: -1 })
+      .limit(limit)
+      .toArray();
+    res.json({ sessions });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/security-events", async (req, res, next) => {
+  try {
+    const limit = Math.min(Number(req.query.limit ?? 50), 100);
+    const collection = await securityEventsCollection();
+    const events = await collection
+      .find({})
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .toArray();
+    res.json({ events });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

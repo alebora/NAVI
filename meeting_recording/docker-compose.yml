@@ -1,0 +1,36 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "127.0.0.1:27017:27017"
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      PORT: "8787"
+      MONGODB_URI: mongodb://mongo:27017
+      MONGODB_DATABASE: navi
+      MONGODB_COLLECTION: meetingSummaries
+      ROBOT_ID: bracketbot-189
+    depends_on:
+      - mongo
+    ports:
+      - "8787:8787"
+
+  web:
+    build:
+      context: ./web
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://bracketbot-189.local:8787
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongo-data:

@@ -1,4 +1,4 @@
-import type { MeetingSummary, RobotStatus } from "./types";
+import type { GuidanceSession, MeetingSummary, RobotStatus, SecurityEvent } from "./types";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8787";
 
@@ -23,4 +23,14 @@ export async function getMeeting(meetingId: string) {
 export async function getRobotStatus() {
   const data = await getJson<{ status: RobotStatus }>("/api/robot/status");
   return data.status;
+}
+
+export async function listGuidanceSessions() {
+  const data = await getJson<{ sessions: GuidanceSession[] }>("/api/guidance-sessions");
+  return data.sessions;
+}
+
+export async function listSecurityEvents() {
+  const data = await getJson<{ events: SecurityEvent[] }>("/api/security-events");
+  return data.events;
 }
