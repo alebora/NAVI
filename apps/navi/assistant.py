@@ -745,6 +745,7 @@ class Controller:
             saved[name] = {
                 "x": float(p["pos"][0]),
                 "y": float(p["pos"][1]),
+                "yaw": 2.0 * math.atan2(float(p["quat"][2]), float(p["quat"][3])),
                 "slam_epoch": self.robot.epoch(),
                 "pgo_count": int(p["pgo_count"]),
             }
@@ -768,6 +769,11 @@ class Controller:
             saved[name] = {
                 "x": round(xy[0], 3),
                 "y": round(xy[1], 3),
+                "yaw": 2.0
+                * math.atan2(
+                    float(s["slam.pose"]["quat"][2]),
+                    float(s["slam.pose"]["quat"][3]),
+                ),
                 "slam_epoch": self.robot.epoch(),
                 "pgo_count": int(s["slam.pose"]["pgo_count"]),
             }
@@ -1541,8 +1547,12 @@ the place is still known, just not driveable until the floor is clear or they re
 Unknown destinations must be taught first: the user can pin it on the map UI (right-click)
 or stand there and say 'remember here as judging'. Only call save_place on that explicit
 request, never while moving.
-These are single-floor SLAM locations; you cannot operate elevators, doors, or arms
-except for the play_movement tool (wave / hug / fist bump / handshake).
+These are single-floor SLAM locations. You can press a calibrated elevator button
+only when the user explicitly asks and you are already at the saved elevator button
+spot; call press_elevator_button and report its short result. Do not press if it
+returns too_far, missing_orientation, wrong_orientation, movement_disabled, busy,
+or error. You cannot operate other doors or arms except for play_movement (wave /
+hug / fist bump / handshake).
 For 'follow me', call follow_user; only one visible person can be followed, with no
 identity recognition. Ask them to stand alone in front at 1.5–1.9 metres and walk
 slowly. Never silently reacquire another person after following stops.
@@ -1598,6 +1608,11 @@ def tool_definitions():
             "Play a short arm gesture. Use 'wave' when the user says hi/hello. Also: hug, fist bump, handshake.",
             "name",
         ),
+        tool(
+            "press_elevator_button",
+            "Press the calibrated elevator button only when already at the saved elevator button spot.",
+            "place",
+        ),
         tool("list_movements", "List available arm movements."),
         tool("stop_motion", "Stop this assistant's motion immediately."),
         tool("get_status", "Read current assistant mode and navigation health."),
@@ -1651,6 +1666,11 @@ def dispatch(controller, name, args, detector_available, shutdown=None):
                 "movement": move,
                 "detail": "Arm gesture started in background.",
             }
+        if name == "press_elevator_button":
+            from elevator import press_elevator_button
+
+            place = str(args.get("place", "") or "").strip() or None
+            return press_elevator_button(controller, place)
         if name == "get_status":
             with controller.lock:
                 return {
