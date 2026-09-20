@@ -4,21 +4,13 @@
 @font-face{font-family:'Lexend';src:url('assets/fonts/lexend.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:block}
 *{box-sizing:border-box}
 #root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
-.stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.triad{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center}
-.triad p{margin:0;font-size:104px;font-weight:700;letter-spacing:-.05em;line-height:1.28;opacity:0}
-.triad .accent{color:#1255CC}
-.lockup{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0}
-.lockup h1{margin:0;font-size:268px;font-weight:700;letter-spacing:-.055em;line-height:1;color:#1255CC}
-.lockup p{margin:26px 0 0;font-size:34px;font-weight:500;letter-spacing:.01em;color:#c6c9ce;opacity:0}
+.stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.lockup{text-align:center;opacity:0}
+.lockup h1{margin:0;font-size:268px;font-weight:700;letter-spacing:-.018em;line-height:1.1;color:#1255CC}
+.lockup p{margin:22px 0 0;font-size:34px;font-weight:500;letter-spacing:.01em;color:#c6c9ce;opacity:0}
 </style>
-<div data-hf-id="hf-jzx8" id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="6.5">
-<section id="outro-scene" class="stage clip" data-start="0" data-duration="6.5" data-track-index="0">
-  <div class="triad" id="outro-triad">
-    <p id="outro-w1">Guide.</p>
-    <p id="outro-w2">Verify.</p>
-    <p id="outro-w3" class="accent">Remember.</p>
-  </div>
+<div id="root" data-composition-id="outro" data-width="1920" data-height="1080" data-duration="4.5">
+<section id="outro-scene" class="stage clip" data-start="0" data-duration="4.5" data-track-index="0">
   <div class="lockup" id="outro-lockup">
     <h1>NAVI</h1>
     <p id="outro-tagline">An embodied indoor guide.</p>
@@ -26,13 +18,8 @@
 </section>
 </div>
 <script>const tl = gsap.timeline({paused:true});
-// Three words settle in, hand off to the lockup, then the frame closes itself.
-["#outro-w1", "#outro-w2", "#outro-w3"].forEach((sel, i) => {
-  tl.fromTo(sel, {opacity:0, y:26}, {opacity:1, y:0, duration:.55, ease:"power3.out", immediateRender:false}, .25 + i * .42);
-});
-tl.to("#outro-triad", {opacity:0, y:-22, duration:.5, ease:"power2.in"}, 2.5);
-tl.fromTo("#outro-lockup", {opacity:0, scale:.965}, {opacity:1, scale:1, duration:.85, ease:"power3.out", immediateRender:false}, 3.0);
-tl.fromTo("#outro-tagline", {opacity:0, y:14}, {opacity:1, y:0, duration:.6, ease:"power2.out", immediateRender:false}, 3.7);
-tl.to("#root", {opacity:0, duration:.55, ease:"power2.inOut"}, 5.95);
+tl.fromTo("#outro-lockup", {opacity:0, scale:.965}, {opacity:1, scale:1, duration:.9, ease:"power3.out", immediateRender:false}, .3);
+tl.fromTo("#outro-tagline", {opacity:0, y:14}, {opacity:1, y:0, duration:.6, ease:"power2.out", immediateRender:false}, 1.0);
+tl.to("#root", {opacity:0, duration:.5, ease:"power2.inOut"}, 4.0);
 window.__timelines["outro"] = tl;</script>
 </template></body></html>

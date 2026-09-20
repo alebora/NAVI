@@ -6,9 +6,9 @@
 #root{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:Lexend,sans-serif;-webkit-font-smoothing:antialiased}
 .beat{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:108px 192px}
 .eyebrow{position:absolute;left:192px;top:120px;font-size:22px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#96999e}
-.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.052em;text-align:center}
+.headline{margin:0;font-weight:700;line-height:1.07;letter-spacing:-.028em;text-align:center}
 .line{display:flex;justify-content:center;align-items:center;gap:.24em;white-space:nowrap}
-.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path;padding:.16em 0 .22em;margin:-.16em 0 -.22em;}
+.word{display:inline-block;clip-path:inset(0 100% 0 0);will-change:transform,clip-path;padding:.16em .1em .22em;margin:-.16em -.1em -.22em;}
 .blue{color:#1255CC}
 .type-lockup{display:flex;align-items:center;justify-content:center;gap:44px}
 .glyph{width:116px;height:116px;flex-shrink:0;overflow:visible}
@@ -19,17 +19,16 @@
 .demo-top .chapter-name{color:#1255CC}
 .demo-top .placeholder-status{color:#92969c}
 .demo-center{position:absolute;left:192px;right:192px;top:420px}
-.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.055em;font-weight:600}
+.demo-title{margin:0 0 32px;font-size:132px;line-height:1.04;letter-spacing:-.018em;font-weight:600}
 .demo-shot{margin:0;color:#9fa3aa;font-size:30px;line-height:1.4;font-weight:500}
 .demo-footer{position:absolute;left:192px;right:192px;bottom:120px;display:flex;justify-content:space-between;color:#777c84;font-size:23px;font-weight:500}
 .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
 </style>
-<div data-hf-id="hf-edq4" id="root" data-composition-id="navigation" data-width="1920" data-height="1080" data-duration="3.5">
-<section data-hf-id="hf-ip7b" id="navigation-beat-1" class="beat clip" data-start="0" data-duration="1.25" data-track-index="0"><div data-hf-id="hf-906n" class="type-lockup"><h1 data-hf-id="hf-p2xq" class="headline" style="font-size:210px"><span data-hf-id="hf-6c9z" class="line"><span data-hf-id="hf-eomj" class="word" id="hf-ip7b-word-1">Just</span><span data-hf-id="hf-wnbq" class="word blue" id="hf-ip7b-word-2">ask.</span></span></h1></div></section>
-<section data-hf-id="hf-oweh" id="navigation-beat-2" class="beat clip" data-start="1.25" data-duration="2.25" data-track-index="0"><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-zq99" class="headline" style="font-size:190px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-ynoc" class="word" id="hf-oweh-word-1">Follow</span><span data-hf-id="hf-s5mr" class="word blue" id="hf-oweh-word-2">NAVI.</span></span></h1><svg data-hf-id="hf-bfrl" class="glyph" viewBox="0 0 120 120" aria-hidden="true"><path data-hf-id="hf-yg81" d="M12 60 H104"  id="hf-oweh-shape-1"/><path data-hf-id="hf-623r" d="M64 20 L104 60 L64 100"  id="hf-oweh-shape-2"/></svg></div></section>
+<div data-hf-id="hf-edq4" id="root" data-composition-id="navigation" data-width="1920" data-height="1080" data-duration="2.5">
+<section data-hf-id="hf-oweh" id="navigation-beat-2" class="beat clip" data-start="0" data-duration="2.5" data-track-index="0"><div data-hf-id="hf-wpqn" class="type-lockup"><h1 data-hf-id="hf-zq99" class="headline" style="font-size:190px"><span data-hf-id="hf-tvt3" class="line"><span data-hf-id="hf-ynoc" class="word" id="hf-oweh-word-1">Follow</span><span data-hf-id="hf-s5mr" class="word blue" id="hf-oweh-word-2">NAVI.</span></span></h1><svg data-hf-id="hf-bfrl" class="glyph" viewBox="0 0 120 120" aria-hidden="true"><path data-hf-id="hf-yg81" d="M12 60 H104"  id="hf-oweh-shape-1"/><path data-hf-id="hf-623r" d="M64 20 L104 60 L64 100"  id="hf-oweh-shape-2"/></svg></div></section>
 </div>
 <script>const tl = gsap.timeline({paused:true});
-const beats = [{"id":"navigation-beat-1","start":0,"duration":1.25,"kind":"rise","times":[0,0.18],"icon":false},{"id":"navigation-beat-2","start":1.25,"duration":2.25,"kind":"wipe","times":[0,0.17],"icon":true}];
+const beats = [{"id":"navigation-beat-2","start":0,"duration":2.5,"kind":"wipe","times":[0,0.17],"icon":true}];
 beats.forEach(beat => {
   const words = gsap.utils.toArray("#" + beat.id + " .word");
   words.forEach((word, i) => {

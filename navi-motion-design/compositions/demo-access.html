@@ -10,7 +10,7 @@
 .da-badge{position:absolute;left:250px;top:300px;width:300px;height:420px;border-radius:22px;background:#16181c;padding:44px 36px}
 .da-badge .strip{width:64px;height:10px;border-radius:5px;background:#1255CC;margin-bottom:150px}
 .da-badge .role{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
-.da-badge .name{font-size:46px;font-weight:700;letter-spacing:-.04em;margin:0 0 26px}
+.da-badge .name{font-size:46px;font-weight:700;letter-spacing:-.022em;margin:0 0 26px}
 .da-badge .uid{font-size:22px;font-weight:500;letter-spacing:.14em;color:#8a8e95;margin:0}
 .da-reader{position:absolute;left:640px;top:370px;width:280px;height:280px;overflow:visible}
 .da-reader circle{fill:#16181c}
@@ -19,17 +19,16 @@
 .da-panel{position:absolute;left:1060px;top:300px;width:668px}
 .da-who{margin:0 0 40px}
 .da-label{font-size:21px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8a8e95;margin:0 0 10px}
-.da-name{margin:0;font-size:48px;font-weight:700;letter-spacing:-.04em}
+.da-name{margin:0;font-size:48px;font-weight:700;letter-spacing:-.022em}
 .da-row{display:flex;align-items:center;gap:22px;height:78px}
 .da-row svg{width:44px;height:44px;flex-shrink:0;overflow:visible}
 .da-row .ok path{fill:none;stroke:#1255CC;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .da-row .no path{fill:none;stroke:#8a8e95;stroke-width:7;stroke-linecap:round}
-.da-place{font-size:40px;font-weight:600;letter-spacing:-.03em}
+.da-place{font-size:40px;font-weight:600;letter-spacing:-.018em}
 .da-row.denied .da-place{color:#6b7078}
 .da-note{font-size:28px;font-weight:500;color:#8a8e95}
-.da-say{position:absolute;left:192px;right:192px;top:810px;margin:0;font-size:76px;font-weight:700;letter-spacing:-.045em;text-align:center}
-.da-foot{position:absolute;left:192px;right:192px;bottom:84px;margin:0;font-size:21px;font-weight:500;color:#8a8e95;text-align:center}
-.reveal{display:block;clip-path:inset(0 100% 0 0);padding:.16em 0 .22em;margin:-.16em 0 -.22em;}
+.da-say{position:absolute;left:192px;right:192px;top:810px;margin:0;font-size:76px;font-weight:700;letter-spacing:-.025em;text-align:center}
+.reveal{display:block;clip-path:inset(0 100% 0 0);padding:.16em .1em .22em;margin:-.16em -.1em -.22em;}
 .blue{color:#1255CC}
 </style>
 <div data-hf-id="hf-da00" id="root" data-composition-id="demo-access" data-width="1920" data-height="1080" data-duration="7">
@@ -55,7 +54,6 @@
     <div class="da-row denied" id="da-row-3"><svg class="no" viewBox="0 0 44 44"><path d="M9 9 L35 35 M35 9 L9 35"/></svg><span class="da-place reveal">Staff lounge</span><span class="da-note reveal">· staff only</span></div>
   </div>
   <p class="da-say reveal" id="da-say">“Hi Mr. Goose. <span class="blue">Where to?</span>”</p>
-  <p class="da-foot reveal" id="da-foot">Prototype: the badge identifies you and sets what NAVI offers. It is not strong authentication.</p>
 </div>
 </div>
 <script>const tl = gsap.timeline({paused:true});
@@ -87,7 +85,6 @@ wipe("#da-who-name", 1.62);
 
 // NAVI greets
 wipe("#da-say", 4.0);
-wipe("#da-foot", 4.5);
 
 window.__timelines["demo-access"] = tl;</script>
 </template></body></html>

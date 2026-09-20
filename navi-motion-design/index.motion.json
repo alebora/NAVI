@@ -3,14 +3,6 @@
   "assertions": [
     {
       "kind": "staysInFrame",
-      "selector": "#hook-beat-1 .headline"
-    },
-    {
-      "kind": "staysInFrame",
-      "selector": "#hook-beat-2 .headline"
-    },
-    {
-      "kind": "staysInFrame",
       "selector": "#intro-beat-1 .headline"
     },
     {
@@ -19,16 +11,12 @@
     },
     {
       "kind": "staysInFrame",
-      "selector": "#navigation-beat-1 .headline"
-    },
-    {
-      "kind": "staysInFrame",
       "selector": "#navigation-beat-2 .headline"
     },
     {
       "kind": "appearsBy",
       "selector": "#dn-step-1 .dn-text",
-      "bySec": 13.3
+      "bySec": 7.3
     },
     {
       "kind": "staysInFrame",
@@ -49,7 +37,7 @@
     {
       "kind": "appearsBy",
       "selector": "#da-badge",
-      "bySec": 37.7
+      "bySec": 34.7
     },
     {
       "kind": "staysInFrame",
@@ -74,7 +62,7 @@
     {
       "kind": "appearsBy",
       "selector": "#live-navigation-slot h1",
-      "bySec": 24.7
+      "bySec": 19.7
     },
     {
       "kind": "staysInFrame",
@@ -83,7 +71,7 @@
     {
       "kind": "appearsBy",
       "selector": "#live-access-slot h1",
-      "bySec": 46.2
+      "bySec": 44.2
     },
     {
       "kind": "appearsBy",
