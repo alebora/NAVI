@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["pymongo", "dnspython"]
+# dependencies = ["pymongo", "dnspython", "vosk"]
 # ///
 """Standalone NAVI meeting recorder.
 
@@ -144,8 +144,35 @@ def transcribe_faster_whisper(wav_path: Path) -> str | None:
     return " ".join(segment.text.strip() for segment in segments).strip()
 
 
+def transcribe_vosk(wav_path: Path) -> str | None:
+    model_path = os.environ.get("VOSK_MODEL")
+    if not model_path:
+        return None
+    import vosk
+
+    transcript = []
+    with wave.open(str(wav_path), "rb") as handle:
+        if handle.getnchannels() != 1 or handle.getsampwidth() != 2:
+            raise RuntimeError("Vosk expects mono 16-bit WAV input")
+        recognizer = vosk.KaldiRecognizer(vosk.Model(model_path), handle.getframerate())
+        while True:
+            chunk = handle.readframes(4000)
+            if not chunk:
+                break
+            if recognizer.AcceptWaveform(chunk):
+                value = json.loads(recognizer.Result())
+                text = str(value.get("text") or "").strip()
+                if text:
+                    transcript.append(text)
+        value = json.loads(recognizer.FinalResult())
+        text = str(value.get("text") or "").strip()
+        if text:
+            transcript.append(text)
+    return " ".join(transcript).strip()
+
+
 def transcribe(wav_path: Path) -> str:
-    for fn in (transcribe_whisper_cpp, transcribe_faster_whisper):
+    for fn in (transcribe_vosk, transcribe_whisper_cpp, transcribe_faster_whisper):
         try:
             text = fn(wav_path)
             if text is not None:
