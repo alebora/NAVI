@@ -9,8 +9,9 @@ let client: MongoClient | null = null;
 
 async function getClient() {
   if (!client) {
-    client = new MongoClient(uri);
-    await client.connect();
+    const nextClient = new MongoClient(uri);
+    await nextClient.connect();
+    client = nextClient;
   }
   return client;
 }
