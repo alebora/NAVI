@@ -1,23 +1,14 @@
 services:
-  mongo:
-    image: mongo:7
-    restart: unless-stopped
-    volumes:
-      - mongo-data:/data/db
-    ports:
-      - "127.0.0.1:27017:27017"
-
   backend:
     build: ./backend
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       PORT: "8787"
-      MONGODB_URI: mongodb://mongo:27017
       MONGODB_DATABASE: navi
       MONGODB_COLLECTION: meetingSummaries
       ROBOT_ID: bracketbot-189
-    depends_on:
-      - mongo
     ports:
       - "8787:8787"
 
@@ -31,6 +22,3 @@ services:
       - backend
     ports:
       - "3000:3000"
-
-volumes:
-  mongo-data:
