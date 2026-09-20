@@ -1,0 +1,26 @@
+# NAVI face on the DisplayPort panel. Replaces the GNOME login screen (gdm)
+# with a bare X server + face.py, restarted automatically if either dies.
+#
+# Install:  sudo cp navi-face.service /etc/systemd/system/
+#           sudo systemctl disable --now gdm
+#           sudo systemctl daemon-reload && sudo systemctl enable --now navi-face
+# Logs:     journalctl -u navi-face -f      (face state changes, badge greetings)
+#           /var/log/Xorg.face.log          (X server / DP-0 mode setting)
+# Back to the desktop login screen:
+#           sudo systemctl disable --now navi-face && sudo systemctl enable --now gdm
+
+[Unit]
+Description=NAVI animated face (X kiosk on DP-0)
+Conflicts=gdm.service getty@tty7.service
+After=systemd-user-sessions.service manager.service
+
+[Service]
+Type=simple
+ExecStart=/home/bracketbot/NAVI/apps/navi/face_kiosk.sh
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical.target

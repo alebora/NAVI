@@ -1,0 +1,437 @@
+# NAVI venue directory — Hack the North, E5 + PSE (E7), University of Waterloo.
+#
+# Transcribed from the official floor maps (1.png .. 7.png in this folder).
+# This is SEMANTIC knowledge only: it tells people which floor/room a place is
+# on. It is NOT a metric map and the planner never reads it. Physical driving
+# always goes through places.yaml (SLAM poses saved with `places.py save`).
+
+venue:
+  name: Hack the North — E5 + PSE (E7), University of Waterloo
+  buildings:
+    E5: Engineering 5
+    PSE: Pearl Sullivan Engineering (PSE / E7, previously Engineering 7)
+  note: >
+    E5 and PSE are joined on every floor by the "E5 to PSE (E7) Connection"
+    walkway in the middle of the building. Elevators, washrooms and water
+    fountains sit next to that connection on both sides of each floor.
+
+floors:
+  1: Main entrance, registration, makerspace and hardware
+  2: Sponsor bay, organizers, judging rooms A-L
+  3: Shopify Inventor's Wing — workshops and hacking space
+  4: Federato AI's Hackerhub — workshops and hacking space
+  5: Dominion Dynamics Momentum Wing — workshops and hacking space
+  6: Trainium Dream Lab — sleeping rooms and mentor lounge
+  7: Judging HQ and the multi-faith quiet room
+
+places:
+  # ---------------- Floor 1 ----------------
+  - name: pse main entrance
+    aliases: [main entrance, front entrance, front door, entrance, way out, exit]
+    kind: entrance
+    floor: 1
+    building: PSE
+    directions: The main entrance is on floor 1 of PSE, on the west side past registration.
+
+  - name: registration
+    aliases: [check in, checkin, sign in, sign up, registration desk, reg desk]
+    kind: desk
+    floor: 1
+    building: E5
+    directions: Registration is on floor 1, just inside the PSE main entrance.
+
+  - name: help desk
+    aliases: [info desk, information desk, information, support, ask a question]
+    kind: desk
+    floor: 1
+    building: E5
+    directions: The help desk is on floor 1 next to registration, by the main entrance.
+
+  - name: badge help
+    aliases: [badge, badge desk, nfc help, lost badge]
+    kind: desk
+    floor: 1
+    building: PSE
+    directions: Badge help is on floor 1 of PSE, at the south edge of the QNX Makerspace.
+
+  - name: goose games
+    aliases: [games, game area, gaming, goose game]
+    kind: area
+    floor: 1
+    building: E5
+    directions: Goose Games is on floor 1 right beside the help desk near the entrance.
+
+  - name: mentorship cafe
+    aliases: [mentorship, mentors, mentor cafe, get help with code, find a mentor]
+    kind: area
+    floor: 1
+    building: E5
+    directions: The Mentorship Cafe is on floor 1, in the middle of E5 by the PSE connection.
+
+  - name: design bay
+    aliases: [design, design area]
+    kind: area
+    floor: 1
+    building: E5
+    directions: The Design Bay is on floor 1 in the south wing of E5.
+
+  - name: hacking space floor 1
+    aliases: [hacking space 1, hack space floor 1, hacky hour]
+    kind: hacking
+    floor: 1
+    building: E5
+    schedule: Hacking Space on Friday and Saturday, Hacky Hour on Sunday
+    directions: Floor 1 hacking space is the long south wing of E5, past the Design Bay.
+
+  - name: qnx makerspace
+    aliases: [makerspace, qnx, maker space, 3d printing, soldering, build stuff]
+    kind: room
+    floor: 1
+    building: PSE
+    room: "1427"
+    directions: The QNX Makerspace is room 1427 on floor 1 of PSE, on the east side.
+
+  - name: hardware inventory
+    aliases: [hardware, hardware desk, tool inventory, parts, components, borrow hardware, get a sensor]
+    kind: room
+    floor: 1
+    building: PSE
+    room: "1401"
+    directions: Hardware and Tool Inventory is room 1401 on floor 1 of PSE, just north of the makerspace.
+
+  - name: tool shop
+    aliases: [tools, tool room, workshop tools]
+    kind: room
+    floor: 1
+    building: PSE
+    room: "1437"
+    directions: The Tool Shop is room 1437 on floor 1 of PSE, at the far east end.
+
+  - name: sleeping bag room
+    aliases: [sleeping bags, bag room, store my sleeping bag, luggage]
+    kind: room
+    floor: 1
+    building: PSE
+    room: "1302"
+    directions: The Sleeping Bag Room is room 1302 on floor 1 of PSE, in the north-west corner.
+
+  - name: activities room
+    aliases: [activities, events room, side events]
+    kind: room
+    floor: 1
+    building: PSE
+    room: "1327 / 1331"
+    schedule: Friday and Saturday
+    directions: The Activities Room is 1327 / 1331 on floor 1 of PSE, below the Sleeping Bag Room.
+
+  - name: rbc oasis tent
+    aliases: [oasis tent, rbc tent, oasis, outside tent]
+    kind: area
+    floor: 1
+    building: outside
+    directions: The RBC Oasis Tent is outside — leave through the PSE main entrance on floor 1 and head west.
+
+  # ---------------- Floor 2 ----------------
+  - name: organizer hq
+    aliases: [organizers, organizer, organiser hq, staff, talk to an organizer]
+    kind: room
+    floor: 2
+    building: E5
+    room: "2001"
+    directions: Organizer HQ is room 2001 on floor 2 of E5, in the middle of the floor.
+
+  - name: volunteer hq
+    aliases: [volunteers, volunteer, volunteering]
+    kind: room
+    floor: 2
+    building: E5
+    room: "2004"
+    directions: Volunteer HQ is room 2004 on floor 2 of E5, in the south-west corner.
+
+  - name: sponsor bay
+    aliases: [sponsors, sponsor booths, sponsor area, career fair, recruiting, swag]
+    kind: area
+    floor: 2
+    building: PSE
+    schedule: Friday and Saturday
+    directions: The Sponsor Bay fills the centre of floor 2 in PSE, across the PSE connection.
+
+  - name: project expo
+    aliases: [expo, project fair, science fair, demo your project, show your project]
+    kind: area
+    floor: 2
+    building: PSE
+    schedule: Sunday
+    directions: The Project Expo is on floor 2 of PSE on Sunday, in the same hall as the Sponsor Bay.
+
+  - name: sponsor event room a
+    aliases: [sponsor room a, event room a]
+    kind: room
+    floor: 2
+    building: PSE
+    room: "2324"
+    directions: Sponsor Event Room A is 2324 on floor 2 of PSE, in the north-west corner.
+
+  - name: sponsor event room b
+    aliases: [sponsor room b, event room b]
+    kind: room
+    floor: 2
+    building: PSE
+    room: "2328"
+    directions: Sponsor Event Room B is 2328 on floor 2 of PSE, just below Room A.
+
+  - name: sponsor event room c
+    aliases: [sponsor room c, event room c]
+    kind: room
+    floor: 2
+    building: PSE
+    room: "2317"
+    directions: Sponsor Event Room C is 2317 on floor 2 of PSE, next to Rooms A and B.
+
+  - name: hacking space floor 2
+    aliases: [hacking space 2, hack space floor 2, hacking space 2409]
+    kind: hacking
+    floor: 2
+    building: PSE
+    room: "2409"
+    directions: Floor 2 hacking space is room 2409 on the east side of PSE.
+
+  - name: judging rooms floor 2
+    aliases: [judging rooms, judging room a, judging room b, judging room c, judging room l, judging floor 2]
+    kind: judging
+    floor: 2
+    building: PSE
+    room: rooms A through L
+    directions: >
+      Judging rooms A through L are on floor 2 of PSE. A and B sit beside the
+      sponsor event rooms, C through G are in the middle, and H through L are
+      along the east corridor.
+
+  - name: mlh booth
+    aliases: [mlh, major league hacking]
+    kind: area
+    floor: 2
+    building: PSE
+    directions: The MLH booth is on floor 2 of PSE, by the top of the Sponsor Bay near the stairs.
+
+  - name: crt table
+    aliases: [crt, first aid, medical]
+    kind: amenity
+    floor: 2
+    building: E5
+    directions: The CRT table is on floor 2 of E5, next to Organizer HQ by the elevators.
+
+  # ---------------- Floor 3 — Shopify Inventor's Wing ----------------
+  - name: workshop room 3a
+    aliases: [wildflower hall, workshop 3a, room 3343]
+    kind: workshop
+    floor: 3
+    building: PSE
+    room: "3343"
+    nickname: Wildflower Hall
+    directions: Workshop Room 3A, Wildflower Hall, is room 3343 on floor 3 of PSE.
+
+  - name: workshop room 3b
+    aliases: [the fern grove, fern grove, workshop 3b, room 3353]
+    kind: workshop
+    floor: 3
+    building: PSE
+    room: "3353"
+    nickname: The Fern Grove
+    directions: Workshop Room 3B, The Fern Grove, is room 3353 on floor 3 of PSE, beside 3A.
+
+  - name: judging rooms floor 3
+    aliases: [judging room m, judging room n, judging room r, judging floor 3]
+    kind: judging
+    floor: 3
+    building: PSE
+    room: rooms M through R
+    directions: Judging rooms M through R are in a row on floor 3 of PSE, just south of the workshop rooms.
+
+  - name: hacking space floor 3
+    aliases: [hacking space 3, hacking space 3101, hacking space 3102, shopify inventors wing]
+    kind: hacking
+    floor: 3
+    building: E5
+    room: "3101 / 3102"
+    directions: Floor 3 hacking space is rooms 3101 and 3102 on the east side of E5, plus smaller rooms 3051 and 3052.
+
+  - name: bridge to e6
+    aliases: [e6 bridge, bridge to sleeping areas, e6, sleeping bridge]
+    kind: connection
+    floor: 3
+    building: PSE
+    directions: The bridge to the E6 sleeping areas leaves from the north side of floor 3 in PSE.
+
+  - name: e5 bridge
+    aliases: [bridge floor 3, e5 walkway]
+    kind: connection
+    floor: 3
+    building: E5
+    directions: The E5 bridge is at the south-east end of floor 3 in E5.
+
+  # ---------------- Floor 4 — Federato AI's Hackerhub ----------------
+  - name: workshop room 4a
+    aliases: [the grasslands, grasslands, workshop 4a, room 4043]
+    kind: workshop
+    floor: 4
+    building: PSE
+    room: "4043"
+    nickname: The Grasslands
+    directions: Workshop Room 4A, The Grasslands, is room 4043 on floor 4 of PSE.
+
+  - name: workshop room 4b
+    aliases: [petal parlour, petal parlor, workshop 4b, room 4053]
+    kind: workshop
+    floor: 4
+    building: PSE
+    room: "4053"
+    nickname: Petal Parlour
+    directions: Workshop Room 4B, Petal Parlour, is room 4053 on floor 4 of PSE, beside 4A.
+
+  - name: workshop room 4c
+    aliases: [glover canyon, workshop 4c, room 4417]
+    kind: workshop
+    floor: 4
+    building: PSE
+    room: "4417"
+    nickname: Glover Canyon
+    directions: Workshop Room 4C, Glover Canyon, is room 4417 on floor 4 of PSE, on the east side.
+
+  - name: hacking space floor 4
+    aliases: [hacking space 4, federato hackerhub, hackerhub, hacking space 4106]
+    kind: hacking
+    floor: 4
+    building: E5
+    room: "4106 / 4128"
+    directions: Floor 4 hacking space is rooms 4106 and 4128 in E5, with more space in 4826, 4433 / 4437 and 4047.
+
+  - name: private praying room
+    aliases: [prayer room, praying room, pray, quiet prayer]
+    kind: amenity
+    floor: 4
+    building: PSE
+    directions: The private praying room is on floor 4 of PSE, beside the PSE connection.
+
+  # ---------------- Floor 5 — Dominion Dynamics Momentum Wing ----------------
+  - name: workshop room 5a
+    aliases: [retro ridge, workshop 5a, room 5343]
+    kind: workshop
+    floor: 5
+    building: PSE
+    room: "5343"
+    nickname: Retro Ridge
+    directions: Workshop Room 5A, Retro Ridge, is room 5343 on floor 5 of PSE.
+
+  - name: workshop room 5b
+    aliases: [vivid meadows, workshop 5b, room 5353]
+    kind: workshop
+    floor: 5
+    building: PSE
+    room: "5353"
+    nickname: Vivid Meadows
+    directions: Workshop Room 5B, Vivid Meadows, is room 5353 on floor 5 of PSE, beside 5A.
+
+  - name: hacking space floor 5
+    aliases: [hacking space 5, momentum wing, dominion dynamics, hacking space 5106]
+    kind: hacking
+    floor: 5
+    building: E5
+    room: "5106 / 5128"
+    directions: Floor 5 hacking space is rooms 5106 and 5128 in E5, plus 5826 and 5047.
+
+  # ---------------- Floor 6 — Trainium Dream Lab ----------------
+  - name: sleeping rooms
+    aliases: [sleep, nap, sleeping room, sleeping area, rest, bed, dream lab, trainium dream lab]
+    kind: room
+    floor: 6
+    building: E5
+    room: "6004 / 6006 / 6008"
+    directions: >
+      The sleeping rooms are 6004, 6006 and 6008 on floor 6 of E5, along the
+      south wing, with extra sleeping space beside them.
+
+  - name: mentor lounge
+    aliases: [wl lounge, wl mentor lounge, mentor room, mentors lounge, lounge]
+    kind: room
+    floor: 6
+    building: E5
+    room: "6114 / 6116 / 6117 / 6123 / 6127"
+    directions: The WL / Mentor Lounge is rooms 6114 to 6127 on floor 6 of E5, on the east side.
+
+  - name: hacking space floor 6
+    aliases: [hacking space 6]
+    kind: hacking
+    floor: 6
+    building: PSE
+    directions: Floor 6 hacking space is in the centre of PSE, next to the elevators.
+
+  # ---------------- Floor 7 ----------------
+  - name: judging hq
+    aliases: [judging, judging area, judges, judging headquarters, where do i get judged, demo to judges]
+    kind: judging
+    floor: 7
+    building: PSE
+    room: "7363 / 7303"
+    directions: >
+      Judging HQ is rooms 7363 and 7303 on floor 7 of PSE. Take the PSE
+      elevators near the connection all the way up to floor 7; it is the large
+      room in the middle of the floor.
+
+  - name: multi faith quiet room
+    aliases: [quiet room, multifaith, multi faith room, prayer room floor 7, quiet space]
+    kind: amenity
+    floor: 7
+    building: PSE
+    directions: The Multi-Faith / Quiet Room is on floor 7 of PSE, beside the water fountain by the connection.
+
+  # ---------------- Amenities on every floor ----------------
+  - name: washroom
+    aliases: [bathroom, toilet, restroom, wc, mens washroom, womens washroom, gender neutral washroom, loo]
+    kind: amenity
+    floors: [1, 2, 3, 4, 5, 6, 7]
+    directions: >
+      Every floor has washrooms next to the E5 to PSE connection in the middle
+      of the building. On the PSE side you will find female, male and
+      gender-neutral washrooms together by the elevators; E5 has gender-neutral
+      washrooms by its own elevators.
+
+  - name: elevator
+    aliases: [elevators, lift, go up, go down, another floor]
+    kind: amenity
+    floors: [1, 2, 3, 4, 5, 6, 7]
+    directions: >
+      Elevators are in the middle of each floor on both sides of the E5 to PSE
+      connection, right beside the washrooms.
+
+  - name: water fountain
+    aliases: [water, drink, fill my bottle, refill, hydration]
+    kind: amenity
+    floors: [1, 2, 3, 4, 5, 6, 7]
+    directions: There is a water fountain on every floor at the E5 to PSE connection, by the elevators.
+
+  - name: snack table
+    aliases: [snacks, food, eat, hungry, drinks]
+    kind: amenity
+    floors: [1, 2]
+    directions: Snack tables are on floor 1 in the PSE makerspace area and on floor 2 near the Sponsor Bay.
+
+  - name: shower
+    aliases: [showers, wash up, clean up]
+    kind: amenity
+    floors: [1]
+    directions: Showers are on floor 1 of PSE, beside the washrooms near the makerspace.
+
+  - name: compost
+    aliases: [compost bin, recycling, garbage, trash, waste]
+    kind: amenity
+    floors: [5, 6]
+    directions: Compost stations are on floors 5 and 6 near the E5 to PSE connection.
+
+  - name: e5 to pse connection
+    aliases: [connection, walkway, between buildings, cross over, get to e7, get to pse, get to e5]
+    kind: connection
+    floors: [1, 2, 3, 4, 5, 6, 7]
+    directions: >
+      The E5 to PSE (E7) connection is the walkway in the middle of every floor.
+      Use it to cross between the two buildings without changing floors.
