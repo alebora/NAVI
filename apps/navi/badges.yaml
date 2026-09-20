@@ -5,4 +5,5 @@
 #
 # UIDs are lowercase hex, no separators: 4 bytes for MIFARE Classic,
 # 7 bytes for NTAG21x.
-badges: {}
+badges:
+  e18fc968: Thomas

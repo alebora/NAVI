@@ -45,6 +45,7 @@ import bus
 
 SCRIPT_DIR = Path(__file__).parent
 BADGES_PATH = SCRIPT_DIR / "badges.yaml"
+ENROLL_TOPIC = "enroll"  # /dev/shm/navi/enroll.json — handoff when serial is busy
 PORT_HINTS = ("/dev/ttyESP32",)
 BAUD = 115200
 # The CH340 has no serial number, so identify the board by its USB IDs.
@@ -81,6 +82,64 @@ def save_badge(uid, name):
         doc = yaml.safe_load(BADGES_PATH.read_text()) or {}
     doc.setdefault("badges", {})[uid] = name
     BADGES_PATH.write_text(yaml.safe_dump(doc, sort_keys=True))
+
+
+def port_in_use():
+    """True if a long-running nfc_bridge (not --enroll/--monitor) holds the ESP32."""
+    import os
+    import subprocess
+
+    me = os.getpid()
+    try:
+        out = subprocess.check_output(["pgrep", "-af", "nfc_bridge.py"], text=True)
+    except (OSError, subprocess.CalledProcessError):
+        return False
+    for line in out.splitlines():
+        if "nfc_bridge.py" not in line or "pgrep" in line:
+            continue
+        if "--enroll" in line or "--monitor" in line:
+            continue
+        try:
+            pid = int(line.split(None, 1)[0])
+        except ValueError:
+            continue
+        if pid != me:
+            return True
+    return False
+
+
+def request_enroll(name, timeout_s=90.0):
+    """Ask the already-running bridge to enroll the next tap as `name`."""
+    bus.publish(ENROLL_TOPIC, name=str(name).strip(), status="pending")
+    print(
+        f"[nfc] serial busy — asked the running bridge to enroll {name!r}. "
+        f"Tap a card within {int(timeout_s)}s.",
+        flush=True,
+    )
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        state = bus.read(ENROLL_TOPIC) or {}
+        if state.get("status") == "done" and state.get("name") == str(name).strip():
+            uid = state.get("uid", "?")
+            print(f"[nfc] saved {uid} -> {name} in {BADGES_PATH.name}", flush=True)
+            bus.clear(ENROLL_TOPIC)
+            return 0
+        if state.get("status") == "error":
+            print(f"[nfc] enroll failed: {state.get('detail', 'unknown')}", flush=True)
+            bus.clear(ENROLL_TOPIC)
+            return 1
+        time.sleep(0.25)
+    print("[nfc] enroll timed out waiting for a tap", flush=True)
+    bus.clear(ENROLL_TOPIC)
+    return 1
+
+
+def pending_enroll_name():
+    state = bus.read(ENROLL_TOPIC) or {}
+    if state.get("status") == "pending":
+        name = (state.get("name") or "").strip()
+        return name or None
+    return None
 
 
 def open_serial(port):
@@ -224,6 +283,11 @@ def main():
     ap.add_argument("--enroll", metavar="NAME", help="assign the next tapped card to NAME")
     args = ap.parse_args()
 
+    # If assistant already owns the ESP32, --enroll hands off via /dev/shm/navi/enroll.json
+    # instead of failing on a busy serial port (the usual "I enrolled but…" failure).
+    if args.enroll and port_in_use():
+        return request_enroll(args.enroll)
+
     badges = load_badges()
     if args.enroll:
         print(f"[nfc] enrolling as {args.enroll!r} — tap a card now", flush=True)
@@ -260,10 +324,24 @@ def main():
             print(f"[nfc] saved {uid} -> {args.enroll} in {BADGES_PATH.name}", flush=True)
             return 0
 
+        # Remote --enroll while this process holds the serial port.
+        enroll_as = pending_enroll_name()
+        if enroll_as:
+            save_badge(uid, enroll_as)
+            bus.publish(ENROLL_TOPIC, name=enroll_as, uid=uid, status="done")
+            print(f"[nfc] enrolled {uid} -> {enroll_as} in {BADGES_PATH.name}", flush=True)
+            # Also publish as a known tap so navigate waiting on verify can proceed.
+            bus.publish("badge", uid=uid, name=enroll_as, known=True)
+            bus.publish("badge_present", present=True)
+            continue
+
+        # Always re-read so an enroll in another terminal is picked up before this tap.
+        badges = load_badges()
+
         # Tag-provided name beats the registry: a badge that says who it is is
         # more trustworthy than a mapping someone typed weeks ago.
         name = (msg.get("name") or "").strip() or badges.get(uid)
-        known = name is not None
+        known = bool(name)
         if not known:
             name = "guest"
 
@@ -271,9 +349,6 @@ def main():
         if not args.monitor:
             bus.publish("badge", uid=uid, name=name, known=known)
             bus.publish("badge_present", present=True)
-
-        # Pick up edits to badges.yaml without a restart.
-        badges = load_badges()
 
     return 0
 
